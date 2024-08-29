@@ -1,0 +1,1096 @@
+
+/*-------------------------------------------
+	Header
+-------------------------------------------*/
+
+
+#header {
+
+	position: relative;
+	color: $white;
+	background: rgb(244, 249, 252);
+	border-bottom: 2px solid $teal;
+	z-index: 5;
+
+	#home & {
+
+		@media screen and (min-width: 480px) {
+
+			background: none;
+			border: none;
+
+		}
+
+		// IE 8
+
+		.ie8 & {
+
+			background: none;
+			border: none;
+
+		}
+
+	}
+
+	.wrap {
+
+		position: relative;
+		max-width: 1280px;
+		margin: 0 auto;
+		padding: 0 0 135px 0;
+
+		@media screen and (min-width: 360px) {
+
+			padding: 0 0 180px 0;
+
+		}
+
+		@media screen and (min-width: 500px) {
+
+			padding: 0 0 180px 0;
+
+		}
+
+		@media screen and (min-width: 700px) {
+
+			padding: 0 0 180px 0;
+
+		}
+
+		// IE 8
+
+		.ie8 & {
+
+			width: 1280px;
+			padding: 0 0 180px 0;
+
+		}
+
+
+	}
+
+}
+
+		#logo {
+
+			position: absolute;
+			left: 13px;
+			bottom: 15px;
+			@include hide-text;
+			z-index: 1;
+
+			@media screen and (min-width: 500px) {
+
+				left: 23px;
+
+			}
+
+			@media screen and (min-width: 700px) {
+
+				left: 38px;
+
+			}
+
+			// IE 8
+
+			.ie8 & {
+
+				left: 38px;
+
+			}
+
+			a {
+
+				display: block;
+				width: 228px;
+				height: 118px;
+				background: url(../img/logo.svg);
+				background-size: 228px 118px;
+
+				@media screen and (min-width: 360px) {
+
+					width: 290px;
+					height: 150px;
+					background-size: 290px 150px;
+
+				}
+
+				// IE 8
+
+				.ie8 & {
+
+					width: 290px;
+					height: 150px;
+					background-size: 290px 150px;
+
+				}
+
+				.no-svg & {
+
+					background-image: url(../img/logo.png);
+
+				}
+
+				&:hover {}
+
+			}
+
+		}
+
+		#nav {
+
+			&.open {
+
+				> ul {
+
+					display: block;
+
+				}
+
+			}
+
+			.toggle {
+
+				position: absolute;
+				right: 140px;
+				bottom: 85px;
+				@include hide-text;
+				z-index: 1;
+
+				@media screen and (min-width: 360px) {
+
+					bottom: 130px;
+
+				}
+
+				@media screen and (min-width: 560px) {
+
+					right: 140px;
+
+				}
+
+				@media screen and (min-width: 640px) {
+
+					right: 180px;
+					bottom: 110px;
+
+				}
+
+				@media screen and (min-width: 700px) {
+
+					right: 180px;
+
+				}
+
+				@media screen and (min-width: 1065px) {
+
+					display: none;
+
+				}
+
+				// IE 8
+
+				.ie8 & {
+
+					display: none;
+
+				}
+
+				span {
+
+					display: block;
+					width: 50px;
+					height: 50px;
+					background: $blue url(../img/nav-toggle.svg);
+					background-size: 50px 50px;
+					cursor: pointer;
+
+					@media screen and (min-width: 640px) {
+
+						width: 70px;
+						height: 70px;
+						background-size: 70px 70px;
+
+					}
+
+					.no-svg & {
+
+						background-image: url(../img/nav-toggle.png);
+
+					}
+
+				}
+
+			}
+
+			ul {
+
+				display: none;
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				background: $blue;
+				z-index: 1;
+
+				@media screen and (min-width: 1065px) {
+
+					position: absolute;
+
+					// Override jQuery function...
+
+					display: block !important;
+					top: 0;
+					right: 185px;
+					width: auto;
+					height: 50px !important;
+					padding: 0 10px;
+					@include group;
+
+				}
+
+				@media screen and (min-width: 1140px) {
+
+					right: 215px;
+					height: 70px !important;
+
+				}
+
+				@media screen and (min-width: 1240px) {
+
+					// display: block;
+					right: 225px;
+
+				}
+
+				// IE 8
+
+				.ie8 & {
+
+					display: block !important;
+
+					position: absolute;
+					top: 0;
+					right: 225px;
+					width: auto;
+					height: 70px !important;
+					padding: 0 10px;
+					@include group;
+
+				}
+
+				li {
+
+					position: relative;
+					@include font-size(18);
+					line-height: (28/18) + em;
+
+					@media screen and (min-width: 1065px) {
+
+						position: relative;
+						float: left;
+						@include font-size(16);
+						line-height: (26/16) + em;
+
+					}
+
+					@media screen and (min-width: 1140px) {
+
+						@include font-size(18);
+						line-height: (28/18) + em;
+
+					}
+
+					// IE 8
+
+					.ie8 & {
+
+						float: left;
+
+					}
+
+					&:first-of-type {}
+
+					&:last-of-type,
+					&.last {
+
+						ul {
+
+							left: auto;
+							right: 0;
+
+						}
+
+					}
+
+					// IE 8
+
+					.ie8 & {
+
+						&.last {
+
+							ul {
+
+								left: auto;
+								right: 0;
+
+							}
+
+						}
+
+					}
+
+					// Show submenu
+
+					&:hover {
+
+						> a {
+
+							background: rgb(10, 77, 104);
+
+						}
+
+						ul {
+
+							@media screen and (min-width: 1065px) {
+
+								display: block !important;
+
+							}
+
+							// IE 8
+
+							.ie8 & {
+
+								display: block !important;
+
+							}
+
+						}
+
+					}
+
+				}
+
+					.submenu-toggle {
+
+						position: absolute;
+						right: 0;
+						top: 0;
+						@include hide-text;
+						cursor: pointer;
+						z-index: 1;
+
+						@media screen and (min-width: 1065px) {
+
+							display: none;
+
+						}
+
+						// IE 8
+
+						.ie8 & {
+
+							display: none;
+
+						}
+
+						span {
+
+							display: block;
+							width: 50px;
+							height: 30px;
+							margin: 20px 0;
+							background: url(../img/submenu-toggle.svg) 12px center no-repeat;
+							background-size: 20px 20px;
+							border-left: 1px solid rgba($white, 0.15);
+
+							@media screen and (min-width: 640px) {
+
+								width: 70px;
+								background-position: 22px center;
+
+							}
+
+						}
+
+					}
+
+					a {
+
+						display: block;
+						height: 70px;
+						padding: 20px 20px 0 20px;
+						color: $white;
+
+						@media screen and (min-width: 500px) {
+
+							padding: 20px 30px 0 30px;
+
+						}
+
+						@media screen and (min-width: 700px) {
+
+							padding: 20px 45px 0 45px;
+
+						}
+
+						@media screen and (min-width: 1065px) {
+
+							height: 50px;
+							padding: 11px 15px 0 15px;
+
+						}
+
+						@media screen and (min-width: 1140px) {
+
+							height: 70px;
+							padding: 20px 15px 0 15px;
+
+						}
+
+						@media screen and (min-width: 1240px) {
+
+							padding: 20px 25px 0 25px;
+
+						}
+
+						// IE 8
+
+						.ie8 & {
+
+							padding: 20px 25px 0 25px;
+
+						}
+
+						&:hover {
+
+							background: rgb(10, 77, 104);
+
+						}
+
+					}
+
+					ul {
+
+						// Temporarily hidden...
+
+						display: none;
+
+						position: static;
+						padding: 10px 0;
+						background: rgb(10, 77, 104);
+
+						@media screen and (min-width: 1065px) {
+
+							display: none !important;
+							position: absolute;
+							left: 0;
+							top: 50px;
+							right: auto;
+							min-width: 100%;
+							height: auto !important;
+							z-index: 1;
+
+						}
+
+						@media screen and (min-width: 1140px) {
+
+							top: 70px;
+
+						}
+
+						@media screen and (min-width: 1240px) {
+
+							padding: 20px 0;
+
+						}
+
+						// IE 8
+
+						.ie8 & {
+
+							display: none !important;
+							position: absolute;
+							left: 0;
+							top: 70px;
+							right: auto;
+							min-width: 100%;
+							height: auto !important;
+							padding: 20px 0;
+							z-index: 1;
+
+						}
+
+						li {
+
+							float: none;
+							@include font-size(16);
+							line-height: (26/16) + em;
+
+							@media screen and (min-width: 1065px) {
+
+								white-space: nowrap;
+
+							}
+
+							// IE 8
+
+							.ie8 & {
+
+								float: none;
+								white-space: nowrap;
+
+							}
+
+						}
+
+							a {
+
+								height: auto;
+								padding: 7px 20px;
+
+								@media screen and (min-width: 500px) {
+
+									padding: 7px 30px;
+
+								}
+
+								@media screen and (min-width: 560px) {
+
+									padding: 7px 30px;
+
+								}
+
+								@media screen and (min-width: 700px) {
+
+									padding: 7px 45px;
+
+								}
+
+								@media screen and (min-width: 1065px) {
+
+									padding: 7px 15px;
+
+								}
+
+								@media screen and (min-width: 1240px) {
+
+									padding: 7px 25px;
+
+								}
+
+								// IE 8
+
+								.ie8 & {
+
+									padding: 7px 25px;
+
+								}
+
+								&:hover {
+
+									background: rgb(11, 103, 139);
+
+								}
+
+							}
+
+					}
+
+					.submenu-open {
+
+						@media screen and (max-width: 1065px) {
+
+							display: block;
+
+						}
+
+						// IE 8
+
+						.ie8 & {
+
+							display: block;
+
+						}
+
+					}
+
+				// While in current section...
+
+				.active {
+
+					> a {
+
+						background: rgb(10, 77, 104);
+
+					}
+
+				}
+
+				.parent-active {
+
+					> a {
+
+						background: rgb(10, 77, 104);
+
+					}
+
+							.active {
+
+								a {
+
+									background: rgb(11, 103, 139);
+
+								}
+
+							}
+
+				}
+
+			}
+
+		}
+
+		.login-toggle {
+
+			position: absolute;
+			bottom: 85px;
+			right: 50px;
+			@include font-size(18);
+			line-height: (28/18) + em;
+			text-align: center;
+			z-index: 10;
+
+			@media screen and (min-width: 360px) {
+
+				bottom: 130px;
+
+			}
+
+			@media screen and (min-width: 640px) {
+
+				right: 70px;
+				bottom: 110px;
+
+			}
+
+			@media screen and (min-width: 1065px) {
+
+				right: 95px;
+				bottom: 130px;
+				@include font-size(16);
+				line-height: (26/16) + em;
+
+			}
+
+			@media screen and (min-width: 1140px) {
+
+				right: 115px;
+				bottom: 110px;
+				@include font-size(18);
+				line-height: (28/18) + em;
+
+			}
+
+			// IE 8
+
+			.ie8 & {
+
+				right: 115px;
+				bottom: 110px;
+
+			}
+
+			span {
+
+				display: block;
+				width: 90px;
+				height: 50px;
+				padding: 10px 0 0 0;
+				background: $cyan;
+				transition: background 0.35s ease-in-out;
+				cursor: pointer;
+
+				@media screen and (min-width: 640px) {
+
+					width: 110px;
+					height: 70px;
+					padding: 20px 0 0 0;
+
+				}
+
+				@media screen and (min-width: 1065px) {
+
+					width: 90px;
+					height: 50px;
+					padding: 11px 0 0 0;
+
+				}
+
+				@media screen and (min-width: 1140px) {
+
+					width: 100px;
+					height: 70px;
+					padding: 20px 0 0 0;
+
+				}
+
+				@media screen and (min-width: 1240px) {
+
+					width: 110px;
+
+				}
+
+				// IE 8
+
+				.ie8 & {
+
+					width: 110px;
+					height: 70px;
+					padding: 20px 0 0 0;
+
+				}
+
+				&:hover {
+
+					background: darken($cyan, 10%);
+
+				}
+
+			}
+
+		}
+
+		#search {
+
+			.toggle {
+
+				position: absolute;
+				right: 0;
+				bottom: 85px;
+				text-indent: -9999px;
+				z-index: 2;
+
+				@media screen and (min-width: 360px) {
+
+					bottom: 130px;
+
+				}
+
+				@media screen and (min-width: 640px) {
+
+					bottom: 110px;
+
+				}
+
+				@media screen and (min-width: 1065px) {
+
+					right: 45px;
+					bottom: 130px;
+
+				}
+
+				@media screen and (min-width: 1140px) {
+
+					bottom: 110px;
+
+				}
+
+				// IE 8
+
+				.ie8 & {
+
+					right: 45px;
+					bottom: 110px;
+
+				}
+
+				span {
+
+					display: block;
+					width: 50px;
+					height: 50px;
+					background: $green url(../img/search.svg);
+					background-size: 50px 50px;
+					transition: background-color 0.35s ease-in-out;
+					cursor: pointer;
+
+					&:hover {
+
+						background-color: darken($green, 5%);
+
+					}
+
+					@media screen and (min-width: 640px) {
+
+						width: 70px;
+						height: 70px;
+						background-size: 70px 70px;
+
+					}
+
+					@media screen and (min-width: 1065px) {
+
+						width: 50px;
+						height: 50px;
+						background-size: 50px;
+
+					}
+
+					@media screen and (min-width: 1140px) {
+
+						width: 70px;
+						height: 70px;
+						background-size: 70px 70px;
+
+					}
+
+					// IE 8
+
+					.ie8 & {
+
+						width: 70px;
+						height: 70px;
+						background-size: 70px 70px;
+
+					}
+
+					.no-svg & {
+
+						background-image: url(../img/search.png);
+
+					}
+
+				}
+
+			}
+
+			.form {
+
+				display: none;
+				position: absolute;
+				left: 0;
+				right: 0;
+				top: 50px;
+				margin: 0;
+				padding: 0;
+				background: rgb(112, 168, 55);
+				border: none;
+				z-index: 1;
+
+				@media screen and (min-width: 580px) {
+
+					left: auto;
+					width: 360px;
+
+				}
+
+				@media screen and (min-width: 640px) {
+
+					top: 70px;
+
+				}
+
+				@media screen and (min-width: 1065px) {
+
+					top: 50px;
+					right: 45px;
+					width: auto;
+
+				}
+
+				@media screen and (min-width: 1140px) {
+
+					top: 70px;
+
+				}
+
+				// IE 8
+
+				.ie8 & {
+
+					left: auto;
+					top: 70px;
+					right: 45px;
+					width: auto;
+
+				}
+
+				&:after {
+
+					content: "";
+					position: absolute;
+					right: 25px;
+					top: 0;
+					width: 18px;
+					height: 10px;
+					margin: 0 -9px 0 0;
+					background: url(../img/search-riser.svg);
+					background-size: 18px 10px;
+					z-index: 1;
+
+					.no-svg & {
+
+						background-image: url(../img/search-riser.png);
+
+					}
+
+					@media screen and (min-width: 640px) {
+
+						right: 35px;
+
+					}
+
+					@media screen and (min-width: 1065px) {
+
+						right: 25px;
+
+					}
+
+					@media screen and (min-width: 1140px) {
+
+						right: 35px;
+
+					}
+
+					// IE 8
+
+					.ie8 & {
+
+						top: -1px;
+						right: 35px;
+
+					}
+
+				}
+
+			}
+
+				form {
+
+					padding: 10px;
+
+					@media screen and (min-width: 1065px) {
+
+						padding: 0;
+
+					}
+
+					@media screen and (min-width: 1140px) {
+
+						padding: 10px;
+
+					}
+
+				}
+
+					label {
+
+						display: none;
+
+					}
+
+					input {
+
+						width: 100%;
+						height: 54px;
+						padding: 0 9px;
+						@include ubuntu-normal-italic;
+						color: $white;
+						background: none;
+						border: none;
+						border-bottom: 1px solid rgb(126, 177, 75);
+
+						@media screen and (min-width: 500px) {
+
+							padding: 0 19px;
+
+						}
+
+						@media screen and (min-width: 580px) {
+
+							padding: 0 12px;
+
+						}
+
+						@media screen and (min-width: 1065px) {
+
+							width: 300px;
+							border: none;
+
+						}
+
+						@media screen and (min-width: 1140px) {
+
+							border-bottom: 1px solid rgb(126, 177, 75);
+
+						}
+
+						// IE 8
+
+						.ie8 & {
+
+							width: 300px;
+							padding: 12px;
+
+						}
+
+						&::-webkit-input-placeholder {
+
+							color: $white;
+
+						}
+
+						&::-moz-input-placeholder {
+
+							color: $white;
+
+						}
+
+						&:-moz-input-placeholder {
+
+							color: $white;
+
+						}
+
+						&::-ms-input-placeholder {
+
+							color: $white;
+
+						}
+
+					}
+
+					button {
+
+						display: none;
+
+					}
+
+			// While open...
+
+			&.open {
+
+				.toggle {
+
+					span {
+
+						&:after {
+
+							display: block;
+
+						}
+
+					}
+
+				}
+
+				.form {
+
+					display: block;
+
+				}
+
+			}
+
+		}

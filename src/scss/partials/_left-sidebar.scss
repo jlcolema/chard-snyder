@@ -1,0 +1,238 @@
+
+/*-------------------------------------------
+	Left Sidebar
+-------------------------------------------*/
+
+
+#left-sidebar {
+
+	.secondary-nav {
+
+		.section {
+
+			@include ubuntu-bold;
+			text-transform: uppercase;
+			color: $white;
+			background: $blue;
+
+			a {
+
+				display: block;
+				padding: 18px;
+				color: $white;
+
+				&:hover {}
+
+			}
+
+		}
+
+		.nav {}
+
+			.toggle {
+
+				// Temporarily hidden...
+
+				display: none;
+
+				span {}
+
+			}
+
+			ul {
+
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				border: 1px solid rgb(211, 223, 230);
+				border-top: none;
+				border-bottom: none;
+
+				li {
+
+					@include font-size(14);
+					line-height: (24/14) + em;
+					border-bottom: 1px solid rgb(211, 223, 230);
+
+				}
+
+					a {
+
+						display: block;
+						color: $charcoal;
+						transition: color 0.35s ease-in-out, background 0.35s ease-in-out;
+
+						&:hover {
+
+							color: $cyan;
+							background: darken(rgb(244, 249, 252), 5%);
+
+						}
+
+					}
+
+						span {
+
+							display: block;
+							padding: 18px;
+
+						}
+
+					ul {
+
+						border: none;
+
+						li {
+
+							@include ubuntu-normal-italic;
+							border: none;
+
+							&:last-of-type,
+							&.last {
+
+								a {}
+
+									span {
+
+										border: none;
+
+									}
+
+							}
+
+						}
+
+						// IE 8
+
+						.last {
+
+							a {}
+
+								span {
+
+									border: none;
+
+								}
+
+						}
+
+							a {
+
+								padding: 0 36px;
+
+								&:hover {}
+
+							}
+
+								span {
+
+									padding: 18px 0;
+									border-bottom: 1px solid rgb(211, 223, 230);
+
+								}
+
+					}
+
+				// If top level item has children...
+
+				.has-children {
+
+					background: rgb(244, 249, 252);
+
+					> a {
+
+						padding: 0 0 0 18px;
+
+						span {
+
+							padding-left: 0;
+							border-bottom: 1px solid rgb(211, 223, 230);
+
+						}
+
+					}
+
+				}
+
+				// Hack? (Might need to fix)
+
+				.parent-active {
+
+					background: rgb(244, 249, 252);
+
+				}
+
+				// Active...
+
+				.active {
+
+					background: rgb(244, 249, 252);
+
+					> a {
+
+						color: $cyan;
+
+						span {}
+
+					}
+
+				}
+
+			}
+
+	}
+
+	.support-center {
+
+		margin: 35px 0 0 0;
+		@include ubuntu-normal-italic;
+		@include font-size(24);
+		line-height: (34/24) + em;
+		text-align: center;
+
+		a {
+
+			display: block;
+			padding: 40px 30px 32px 30px;
+			color: $white;
+			background: $cyan;
+			border-radius: 10px;
+			transition: background 0.35s ease-in-out;
+
+			// IE 8
+
+			.ie8 & {
+
+				padding: 40px 25px 32px 25px;
+
+			}
+
+			&:before {
+
+				content: "";
+				display: block;
+				width: 100px;
+				height: 100px;
+				margin: 0 auto 15px auto;
+				background: url(../img/support-center.svg);
+				background-size: 100px 100px;
+
+				.no-svg & {
+
+					background-image: url(../img/support-center.png);
+
+				}
+
+			}
+
+			&:hover {
+
+				background: darken($cyan, 10%);
+
+			}
+
+		}
+
+	}
+
+}

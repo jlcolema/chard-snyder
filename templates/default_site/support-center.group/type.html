@@ -1,0 +1,785 @@
+{layout='inc/layout'}
+
+{layout:set name='category-sidebar'}
+
+	{embed='inc/category-sidebar'}
+
+{/layout:set}
+
+{exp:channel:entries channel='support_center_types' limit='1'}
+
+	{if support_type_title_override}
+
+		<h1>{support_type_title_override}{triggers:entries_title}</h1>
+
+	{if:else}
+
+		<h1>{title}{triggers:entries_title}</h1>
+
+	{/if}
+
+	{if support_type_overview}
+
+		{if triggers:entries_title}
+
+
+		{if:else}
+
+			<div class="summary">
+
+				{support_type_overview}
+
+			</div>
+
+		{/if}
+
+	{/if}
+
+{/exp:channel:entries}
+
+{if segment_2 == 'faqs'}
+
+	<div class="support-center-category-search">
+
+		{exp:search:simple_form channel='faqs' result_page='support-center/results' no_result_page='support-center/no-results' results='10' search_in='entries'}
+
+			<ul>
+
+				<li>
+
+					<label for="keywords">Search our FAQs</label>
+
+					<input type="text" name="keywords" id="keywords" value="" placeholder="Search Our FAQs" />
+
+				</li>
+
+			</ul>
+
+			<button type="submit">Search</button>
+
+		{/exp:search:simple_form}
+
+	</div>
+
+{/if}
+
+{if segment_2 == 'videos'}
+
+	<div class="support-center-category-search">
+
+		{exp:search:simple_form channel='videos' result_page='support-center/results' no_result_page='support-center/no-results' results='10' search_in='entries'}
+
+			<ul>
+
+				<li>
+
+					<label for="keywords">Search our Videos</label>
+
+					<input type="text" name="keywords" id="keywords" value="" placeholder="Search Our Videos" />
+
+				</li>
+
+			</ul>
+
+			<button type="submit">Search</button>
+
+		{/exp:search:simple_form}
+
+	</div>
+
+{/if}
+
+{if segment_2 == 'forms-and-resources'}
+
+	<div class="support-center-category-search">
+
+		{exp:search:simple_form channel='forms_and_resources' result_page='support-center/results' no_result_page='support-center/no-results' results='10' search_in='entries'}
+
+			<ul>
+
+				<li>
+
+					<label for="keywords">Search our Forms &amp; Resources</label>
+
+					<input type="text" name="keywords" id="keywords" value="" placeholder="Search Our Forms &amp; Resources" />
+
+				</li>
+
+			</ul>
+
+			<button type="submit">Search</button>
+
+		{/exp:search:simple_form}
+
+	</div>
+
+{/if}
+
+{if segment_2 == 'tools-and-apps'}
+
+	<div class="support-center-category-search">
+
+		{exp:search:simple_form channel='tools_and_apps' result_page='support-center/results' no_result_page='support-center/no-results' results='10' search_in='entries'}
+
+			<ul>
+
+				<li>
+
+					<label for="keywords">Search our Tools &amp; Apps</label>
+
+					<input type="text" name="keywords" id="keywords" value="" placeholder="Search Our Tools &amp; Apps" />
+
+				</li>
+
+			</ul>
+
+			<button type="submit">Search</button>
+
+		{/exp:search:simple_form}
+
+	</div>
+
+{/if}
+
+{if segment_2 == 'compliance-watch'}
+
+	<div class="support-center-category-search">
+
+		{exp:search:simple_form channel='compliance_watch' result_page='support-center/results' no_result_page='support-center/no-results' results='10' search_in='entries'}
+
+			<ul>
+
+				<li>
+
+					<label for="keywords">Search our Compliance Watch</label>
+
+					<input type="text" name="keywords" id="keywords" value="" placeholder="Search Our Compliance Watch" />
+
+				</li>
+
+			</ul>
+
+			<button type="submit">Search</button>
+
+		{/exp:search:simple_form}
+
+	</div>
+
+{/if}
+
+{if segment_2 == 'faqs'}
+
+<div class="faqs-paginated-listing">
+
+	<div class="listing">
+
+		<ul>
+
+			{exp:channel:entries channel='faqs' dynamic='no' limit='10' paginate='bottom' {triggers:entries}}
+
+				<li>
+
+					{if faq_title}
+
+						<h2>
+
+							<a href="{page_url}">{faq_title}</a>
+
+						</h2>
+
+					{if:else}
+
+						<h2>
+
+							<a href="{page_url}">{title}</a>
+
+						</h2>
+
+					{/if}
+
+					<div class="item-summary">
+
+						{faq_short_answer}
+
+					</div>
+
+					<div class="more">
+
+						<a href="{page_url}">
+
+							Read More <span class="arrow">&rarr;</span>
+
+						</a>
+
+					</div>
+
+				</li>
+
+				{paginate}
+
+					{pagination_links}
+
+						<div class="pagination">
+
+							{previous_page}
+
+								<div class="back">
+
+									<a href="{pagination_url}">
+
+										<span class="arrow">&larr;</span> Back
+
+									</a>
+
+								</div>
+
+							{/previous_page}
+
+							<div class="pages">
+
+								{page}
+
+									<a href="{pagination_url}" class="{if current_page}active{/if}">{pagination_page_number}</a>
+
+								{/page}
+
+							</div>
+
+							{next_page}
+
+								<div class="next">
+
+									<a href="{pagination_url}">
+
+										Next <span class="arrow">&rarr;</span>
+
+									</a>
+
+								</div>
+
+							{/next_page}
+
+						</div>
+
+					{/pagination_links}
+
+				{/paginate}
+
+			{/exp:channel:entries}
+
+		</ul>
+
+	</div>
+
+</div>
+
+{if:elseif segment_2 == 'videos'}
+
+<div class="videos-paginated-listing">
+
+	<div class="listing">
+
+		<ul>
+
+			{exp:channel:entries channel='videos' dynamic='no' limit='10' paginate='bottom' {triggers:entries}}
+
+				<li>
+
+					{if video_title}
+
+						<h2>
+
+							<a href="{page_url}">{video_title}</a>
+
+						</h2>
+
+					{if:else}
+
+						<h2>
+
+							<a href="{page_url}">{title}</a>
+
+						</h2>
+
+					{/if}
+
+					<div class="item-summary">
+
+						{video_short_desc}
+
+					</div>
+
+					<div class="more">
+
+						<a href="{page_url}">
+
+							Read More <span class="arrow">&rarr;</span>
+
+						</a>
+
+					</div>
+
+				</li>
+
+				{paginate}
+
+					{pagination_links}
+
+						<div class="pagination">
+
+							{previous_page}
+
+								<div class="back">
+
+									<a href="{pagination_url}">
+
+										<span class="arrow">&larr;</span> Back
+
+									</a>
+
+								</div>
+
+							{/previous_page}
+
+							<div class="pages">
+
+								{page}
+
+									<a href="{pagination_url}" class="{if current_page}active{/if}">{pagination_page_number}</a>
+
+								{/page}
+
+							</div>
+
+							{next_page}
+
+								<div class="next">
+
+									<a href="{pagination_url}">
+
+										Next <span class="arrow">&rarr;</span>
+
+									</a>
+
+								</div>
+
+							{/next_page}
+
+						</div>
+
+					{/pagination_links}
+
+				{/paginate}
+
+			{/exp:channel:entries}
+
+		</ul>
+
+	</div>
+
+</div>
+
+{if:elseif segment_2 == 'forms-and-resources'}
+
+<div class="forms-and-resources-paginated-listing">
+
+	<div class="listing">
+
+		<ul>
+
+			{exp:channel:entries channel='forms_and_resources' dynamic='no' limit='10' paginate='bottom' {triggers:entries}}
+
+				<li>
+
+					{if form_and_resource_title}
+
+						<h2>
+
+							<a href="{page_url}">{form_and_resource_title}</a>
+
+						</h2>
+
+					{if:else}
+
+						<h2>
+
+							<a href="{page_url}">{title}</a>
+
+						</h2>
+
+					{/if}
+
+					<div class="item-summary">
+
+						{form_and_resource_short_desc}
+
+					</div>
+
+					<div class="more">
+
+						<a href="{page_url}">
+
+							Read More <span class="arrow">&rarr;</span>
+
+						</a>
+
+					</div>
+
+				</li>
+
+				{paginate}
+
+					{pagination_links}
+
+						<div class="pagination">
+
+							{previous_page}
+
+								<div class="back">
+
+									<a href="{pagination_url}">
+
+										<span class="arrow">&larr;</span> Back
+
+									</a>
+
+								</div>
+
+							{/previous_page}
+
+							<div class="pages">
+
+								{page}
+
+									<a href="{pagination_url}" class="{if current_page}active{/if}">{pagination_page_number}</a>
+
+								{/page}
+
+							</div>
+
+							{next_page}
+
+								<div class="next">
+
+									<a href="{pagination_url}">
+
+										Next <span class="arrow">&rarr;</span>
+
+									</a>
+
+								</div>
+
+							{/next_page}
+
+						</div>
+
+					{/pagination_links}
+
+				{/paginate}
+
+			{/exp:channel:entries}
+
+		</ul>
+
+	</div>
+
+</div>
+
+{if:elseif segment_2 == 'tools-and-apps'}
+
+<div class="tools-and-apps-paginated-listing">
+
+	<div class="listing">
+
+		<ul>
+
+			{exp:channel:entries channel='tools_and_apps' dynamic='no' limit='10' paginate='bottom' {triggers:entries}}
+
+				<li>
+
+					{if tool_and_app_title}
+
+						<h2>
+
+							<a href="{page_url}">{tool_and_app_title}</a>
+
+						</h2>
+
+					{if:else}
+
+						<h2>
+
+							<a href="{page_url}">{title}</a>
+
+						</h2>
+
+					{/if}
+
+					<div class="item-summary">
+
+						{tool_and_app_short_desc}
+
+					</div>
+
+					<div class="more">
+
+						<a href="{page_url}">
+
+							Read More <span class="arrow">&rarr;</span>
+
+						</a>
+
+					</div>
+
+				</li>
+
+				{paginate}
+
+					{pagination_links}
+
+						<div class="pagination">
+
+							{previous_page}
+
+								<div class="back">
+
+									<a href="{pagination_url}">
+
+										<span class="arrow">&larr;</span> Back
+
+									</a>
+
+								</div>
+
+							{/previous_page}
+
+							<div class="pages">
+
+								{page}
+
+									<a href="{pagination_url}" class="{if current_page}active{/if}">{pagination_page_number}</a>
+
+								{/page}
+
+							</div>
+
+							{next_page}
+
+								<div class="next">
+
+									<a href="{pagination_url}">
+
+										Next <span class="arrow">&rarr;</span>
+
+									</a>
+
+								</div>
+
+							{/next_page}
+
+						</div>
+
+					{/pagination_links}
+
+				{/paginate}
+
+			{/exp:channel:entries}
+
+		</ul>
+
+	</div>
+
+</div>
+
+{if:else}
+
+	<div class="compliance-watch-paginated-listing">
+
+		<div class="listing">
+
+			<ul>
+
+				{exp:channel:entries channel='compliance_watch' dynamic='no' limit='10' paginate='bottom' {triggers:entries}}
+
+					<li>
+
+						{if compliance_watch_title}
+
+							<h2>
+
+								<a href="{page_url}">{compliance_watch_title}</a>
+
+							</h2>
+
+						{if:else}
+
+							<h2>
+
+								<a href="{page_url}">{title}</a>
+
+							</h2>
+
+						{/if}
+
+						<div class="item-summary">
+
+							{compliance_watch_short_desc}
+
+						</div>
+
+						<div class="more">
+
+							<a href="{page_url}">
+
+								Read More <span class="arrow">&rarr;</span>
+
+							</a>
+
+						</div>
+
+					</li>
+
+					{paginate}
+
+						{pagination_links}
+
+							<div class="pagination">
+
+								{previous_page}
+
+									<div class="back">
+
+										<a href="{pagination_url}">
+
+											<span class="arrow">&larr;</span> Back
+
+										</a>
+
+									</div>
+
+								{/previous_page}
+
+								<div class="pages">
+
+									{page}
+
+										<a href="{pagination_url}" class="{if current_page}active{/if}">{pagination_page_number}</a>
+
+									{/page}
+
+								</div>
+
+								{next_page}
+
+									<div class="next">
+
+										<a href="{pagination_url}">
+
+											Next <span class="arrow">&rarr;</span>
+
+										</a>
+
+									</div>
+
+								{/next_page}
+
+							</div>
+
+						{/pagination_links}
+
+					{/paginate}
+
+				{/exp:channel:entries}
+
+			</ul>
+
+		</div>
+
+	</div>
+
+	<div class="newsletter ctct-embed-signup">
+
+		<h3>Subscribe to the quarterly Compliance Watch eNewsletter</h3>
+
+		<span id="success_message" style="display:none;">
+
+			<div>Thanks for signing up!</div>
+
+		</span>
+
+		<form data-id="embedded_signup:form" class="ctct-custom-form Form" name="embedded_signup" method="POST" action="https://visitor2.constantcontact.com/api/signup">
+
+			{!-- The following code must be included to ensure your sign-up form works properly. --}
+
+			<input data-id="ca:input" type="hidden" name="ca" value="04f19cdd-b44b-4736-ae2d-e05fa431c154">
+			<input data-id="list:input" type="hidden" name="list" value="1334936735">
+			<input data-id="source:input" type="hidden" name="source" value="EFD">
+			<input data-id="required:input" type="hidden" name="required" value="list,email">
+			<input data-id="url:input" type="hidden" name="url" value="">
+
+			<ul>
+
+				<li data-id="First Name:li">
+
+					<label data-id="First Name:label" data-name="first_name">First Name</label>
+
+					<input data-id="First Name:input" type="text" name="first_name" placeholder="First Name" value="" />
+
+				</li>
+
+				<li data-id="Last Name:li">
+
+					<label data-id="Last Name:label" data-name="last_name">Last Name</label>
+
+					<input data-id="Last Name:input" type="text" name="last_name" placeholder="Last Name" value="" />
+
+				</li>
+
+				<li data-id="Email Address:li">
+
+					<label data-id="Email Address:label" data-name="email" class="ctct-form-required">Email Address</label>
+
+					<input data-id="Email Address:input" type="text" name="email" placeholder="Email Address" value="" />
+
+				</li>
+
+				<li data-id="Company:li">
+
+					<label data-id="Company:label" data-name="company">Company</label>
+
+					<input data-id="Company:input" type="text" name="company" placeholder="Company" value="" />
+
+				</li>
+
+			</ul>
+
+			<button type="submit" data-enabled="enabled">Subscribe</button>
+
+		</form>
+
+	</div>
+
+	<script type='text/javascript'>
+
+		var localizedErrMap = {};
+
+		localizedErrMap['required'] = 		'This field is required.';
+		localizedErrMap['ca'] = 			'An unexpected error occurred while attempting to send email.';
+		localizedErrMap['email'] = 			'Please enter your email address in name@email.com format.';
+		localizedErrMap['birthday'] = 		'Please enter birthday in MM/DD format.';
+		localizedErrMap['anniversary'] = 	'Please enter anniversary in MM/DD/YYYY format.';
+		localizedErrMap['custom_date'] = 	'Please enter this date in MM/DD/YYYY format.';
+		localizedErrMap['list'] = 			'Please select at least one email list.';
+		localizedErrMap['generic'] = 		'This field is invalid.';
+		localizedErrMap['shared'] = 		'Sorry, we could not complete your sign-up. Please contact us to resolve this.';
+		localizedErrMap['state_mismatch'] = 'Mismatched State/Province and Country.';
+		localizedErrMap['state_province'] = 'Select a state/province';
+		localizedErrMap['selectcountry'] = 	'Select a country';
+
+		var postURL = 'https://visitor2.constantcontact.com/api/signup';
+
+	</script>
+
+	<script type='text/javascript' src='https://static.ctctcdn.com/h/contacts-embedded-signup-assets/1.0.2/js/signup-form.js'></script>
+
+{/if}

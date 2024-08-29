@@ -1,0 +1,35 @@
+{layout='inc/layout'}
+
+{layout:set name='left-sidebar'}
+
+	{embed='inc/left-sidebar'}
+
+{/layout:set}
+
+{exp:channel:entries channel='news_and_events' limit='1'}
+
+	<article class="h-entry">
+
+		<h1 class="no-margin">{title}</h1>
+
+		<div class="posted-on">
+
+			Posted on <time datetime="{entry_date format="%Y-%m-%dT%H:%i:%s%Q"}">{entry_date format='%M %j, %Y'}</time>
+
+		</div>
+
+		{if news_and_event_overview}
+
+			<div class="summary">
+
+				{news_and_event_overview}
+
+			</div>
+
+		{/if}
+
+		{news_and_event_content}
+
+	</article>
+
+{/exp:channel:entries}

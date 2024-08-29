@@ -1,0 +1,275 @@
+<!doctype html>
+
+<!--[if IE 8]>
+
+	<html class="ie ie8 no-js" lang="en">
+
+<![endif]-->
+
+<!--[if IE 9]>
+
+	<html class="ie ie9 no-js" lang="en">
+
+<![endif]-->
+
+<!--[if gt IE 9]><!-->
+
+	<html class="no-js" lang="en">
+
+<!--<![endif]-->
+
+<head>
+
+	<meta charset="utf-8" />
+
+	<!--[if IE]>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+
+	<![endif]-->
+
+	{if segment_1 == ''}
+
+		{exp:channel:entries channel='home' dynamic='no' limit='1'}
+
+			{exp:seo_lite entry_id='{entry_id}'}
+
+		{/exp:channel:entries}
+
+	{if:else}
+
+		{exp:seo_lite use_last_segment='yes'}
+
+	{/if}
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<meta name="format-detection" content="telephone=no" />
+
+	<link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png" />
+	<link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png" />
+	<link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png" />
+	<link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png" />
+	<link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png" />
+	<link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png" />
+
+	<link rel="icon" type="image/png" sizes="192x192" href="/android-icon-192x192.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+
+	<link rel="manifest" href="/manifest.json" />
+
+	<meta name="msapplication-TileColor" content="#ffffff" />
+	<meta name="msapplication-TileImage" content="/ms-icon-144x144.png" />
+	<meta name="theme-color" content="#ffffff" />
+
+	<link type="text/css" href="/assets/css/clients.css" rel="stylesheet" media="screen, projection" />
+
+	<link type="text/css" href="/assets/css/print.css" rel="stylesheet" media="print" />
+
+	<link type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300italic,400,400italic,500,500italic,700,700italic" rel="stylesheet" media="screen, projection" />
+
+	<link type="application/rss+xml" href="" rel="alternate" />
+
+	<!--[if IE 8]>
+
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+		<script type="text/javascript" src="/assets/js/selectivizr.js"></script>
+
+	<![endif]-->
+
+	<!-- Twitter Cards (https://dev.twitter.com/cards/markup) -->
+
+	<meta name="twitter:card" content="" />
+	<meta name="twitter:site" content="" />
+	<meta name="twitter:creator" content="" />
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:description" content="" />
+	<meta name="twitter:image" content="" />
+
+	<!-- Facebook Open Graph (https://developers.facebook.com/docs/sharing/webmasters#markup) -->
+
+	<meta property="og:url" content="" />
+	<meta property="og:title" content="" />
+	<meta property="og:site_name" content="" />
+	<meta property="og:description" content="" />
+	<meta property="og:image" content="" />
+
+</head>
+
+<body id="" class="">
+
+	{exp:channel:entries channel='clients' limit='1'}
+
+		<header id="header" role="banner">
+
+			<div class="wrap">
+
+				<div id="logo">
+
+					<img src="{client_logo}" alt="{title}" />
+
+				</div>
+
+				<div class="links">
+
+					<ul>
+
+						{client_buttons}
+
+							<li>
+
+								<a href="{client_buttons:client_button_url}" rel="external">{client_buttons:client_button_title}</a>
+
+							</li>
+
+						{/client_buttons}
+
+					</ul>
+
+				</div>
+
+			</div>
+
+		</header>
+
+		<div id="content" role="main">
+
+			<div class="wrap">
+
+				<nav class="sections" role="navigation">
+
+					<ul>
+
+						{client_sections limit='1'}
+
+							<li>
+
+								<a href="#section-{client_sections:row_id}">Home</a>
+
+							</li>
+
+						{/client_sections}
+
+						{client_sections offset='1'}
+
+							<li>
+
+								<a href="#section-{client_sections:row_id}">{client_sections:client_section_title}</a>
+
+							</li>
+
+						{/client_sections}
+
+					</ul>
+
+				</nav>
+
+				<div class="main">
+
+					{client_sections limit='1'}
+
+						<div id="section-{client_sections:row_id}" class="section">
+
+							<h1 class="section-title">{client_sections:client_section_title}</h1>
+
+							{client_sections:client_section_content}
+
+							<div class="back-to-top">
+
+								<a href="#header">Back to Top</a>
+
+							</div>
+
+						</div>
+
+					{/client_sections}
+
+					{client_sections offset='1'}
+
+						<div id="section-{client_sections:row_id}" class="section">
+
+							<h2 class="section-title">{client_sections:client_section_title}</h2>
+
+							{client_sections:client_section_content}
+
+							<div class="back-to-top">
+
+								<a href="#header">Back to Top</a>
+
+							</div>
+
+						</div>
+
+					{/client_sections}
+
+				</div>
+
+			</div>
+
+		</div>
+
+	{/exp:channel:entries}
+
+	<footer id="footer" role="contentinfo">
+
+		<div class="wrap">
+
+			<div class="h-card">
+
+				<span class="p-name">Chard Snyder</span>
+
+				<span class="p-adr">
+
+					<span class="p-street-address">3510 Irwin Simpson Road</span>,
+
+					<span class="p-locality">Mason</span>,
+
+					<span class="p-region">OH</span>
+
+					<span class="p-postal-code">45040</span>
+
+				</span>
+
+				<span class="separator">&#124;</span>
+
+				<span class="p-tel">(800) 982-7715</span>
+
+				<span class="separator">&#124;</span>
+
+				<span class="p-tel">(513) 459-9997</span>
+
+				<span class="separator">&#124;</span>
+
+				<span class="fax">
+
+					<span class="label">Fax:</span> <span class="p-tel">(888) 245-8452</span>
+
+				</span>
+
+				<span class="separator">&#124;</span>
+
+				<a href="mailto:askpenny@chard-snyder.com" class="u-email">askpenny@chard-snyder.com</a>
+
+			</div>
+
+			<p id="copyright">
+
+				<small>&copy; {current_time format="%Y"} {site_name}. All rights reserved. <a href="/about/privacy-policy/">Privacy policy</a>.</small>
+
+			</p>
+
+		</div>
+
+	</footer>
+
+	<script type="text/javascript" src="/assets/js/scripts.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,311 @@
+
+/*-------------------------------------------
+	Layouts
+-------------------------------------------*/
+
+
+// 01. Login
+// 02. Header
+// 03. Content
+		// 03.01. Breadcrumbs
+		// 03.02. Body
+				// 03.02.01. Secondary Nav (Need a better name)
+				// 03.02.02. Content
+				// 03.02.03. Category Nav (Need a better name)
+// 04. Footer
+
+
+// Layouts
+// Components
+// Modules
+// Blocks
+// Objects
+
+
+html {}
+
+body {}
+
+	#login {
+
+		.wrap {}
+
+	}
+
+	#header {
+
+		.wrap {}
+
+	}
+
+	#breadcrumbs {
+
+		.wrap {}
+
+	}
+
+	#content {
+
+		.wrap {
+
+			@media screen and (min-width: 920px) {
+
+				// display: flex;
+				@include group;
+
+			}
+
+			// IE 8
+
+			.ie8 & {
+
+				width: 1280px;
+				padding: 0 45px;
+
+			}
+
+			// For browsers that do not support flexbox...
+
+			.left-sidebar &,
+			.right-sidebar & {
+
+				// IE 8
+
+				.ie8 & {
+
+					@include group;
+
+				}
+
+				// IE 9
+
+				.ie9 & {
+
+					@include group;
+
+				}
+
+			}
+
+		}
+
+	}
+
+			.main {
+
+				@media screen and (min-width: 920px) {
+
+					// order: 2;
+					// flex: 1;
+
+				}
+
+				// For browsers that do not support flexbox...
+
+				.full-width & {}
+
+				.left-sidebar & {
+
+					@media screen and (min-width: 920px) {
+
+						float: right;
+						width: 100%;
+						margin: 0 0 0 -290px;
+						padding: 0 0 0 290px;
+
+					}
+
+					@media screen and (min-width: 1000px) {
+
+						margin: 0 0 0 -360px;
+						padding: 0 0 0 360px;
+
+					}
+
+					// IE 8
+
+					.ie8 & {
+
+						float: right;
+						width: 830px;
+
+					}
+
+					// IE 9
+
+					@media screen and (min-width: 920px) {
+
+						.ie9 & {
+
+							float: right;
+							width: 100%;
+							margin: 0 0 0 -290px;
+							padding: 0 0 0 290px;
+
+						}
+
+					}
+
+					// IE 9
+
+					@media screen and (min-width: 1000px) {
+
+						.ie9 & {
+
+							margin: 0 0 0 -360px;
+							padding: 0 0 0 360px;
+
+						}
+
+					}
+
+				}
+
+				.right-sidebar & {
+
+					@media screen and (min-width: 920px) {
+
+						float: left;
+						width: 100%;
+						margin: 0 -290px 0 0;
+						padding: 0 290px 0 0;
+
+					}
+
+					@media screen and (min-width: 1000px) {
+
+						margin: 0 -360px 0 0;
+						padding: 0 360px 0 0;
+
+					}
+
+					// IE 8
+
+					.ie8 & {
+
+						float: left;
+						width: 830px;
+
+					}
+
+					// IE 9
+
+					@media screen and (min-width: 920px) {
+
+						.ie9 & {
+
+							float: left;
+							width: 100%;
+							margin: 0 -290px 0 0;
+							padding: 0 290px 0 0;
+
+						}
+
+					}
+
+					// IE 9
+
+					@media screen and (min-width: 1000px) {
+
+						.ie9 & {
+
+							margin: 0 -360px 0 0;
+							padding: 0 360px 0 0;
+
+						}
+
+					}
+
+				}
+
+			}
+
+			#left-sidebar {
+
+				margin: 40px 0 0 0;
+
+				@media screen and (min-width: 920px) {
+
+					// order: 1;
+					float: left;
+					width: 250px;
+					margin: 0;
+
+					// IE 9
+
+					.ie9 & {
+
+						float: left;
+						margin: 0
+
+					}
+
+				}
+
+				@media screen and (min-width: 1000px) {
+
+					width: 320px;
+
+				}
+
+				// For browsers that do not support flexbox...
+
+				// IE 8
+
+				.ie8 & {
+
+					float: left;
+					width: 320px;
+					margin: 0;
+
+				}
+
+			}
+
+			#right-sidebar {
+
+				margin: 40px 0 0 0;
+
+				@media screen and (min-width: 920px) {
+
+					// order: 3;
+					float: right;
+					width: 250px;
+					margin: 0;
+
+					// IE 9
+
+					.ie9 & {
+
+						float: right;
+						margin: 0;
+
+					}
+
+				}
+
+				@media screen and (min-width: 1000px) {
+
+					width: 320px;
+
+				}
+
+				// For browsers that do not support flexbox...
+
+				// IE 8
+
+				.ie8 & {
+
+					float: right;
+					width: 320px;
+					margin: 0;
+
+				}
+
+			}
+
+	#footer {
+
+		.wrap {}
+
+	}

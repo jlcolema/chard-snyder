@@ -1,0 +1,166 @@
+{layout='inc/layout'}
+
+{layout:set name='left-sidebar'}
+
+	{embed='inc/left-sidebar'}
+
+{/layout:set}
+
+{exp:channel:entries channel='contact' dynamic='no' limit='1'}
+
+	{if contact_title}
+
+		<h1>{contact_title}</h1>
+
+	{if:else}
+
+		<h1>{title}</h1>
+
+	{/if}
+
+	{if contact_overview}
+
+		<div class="summary">
+
+			{contact_overview}
+
+		</div>
+
+	{/if}
+
+	{contact_content}
+
+	{if contact_contacts}
+
+		<div class="contacts">
+
+			<div class="accordion">
+
+				<ul>
+
+					{contact_contacts}
+
+						<li>
+
+							<h2>{contact_contacts:contact_contact_title}</h2>
+
+							<div class="detail">
+
+								{contact_contacts:contact_contact_content}
+
+							</div>
+
+						</li>
+
+					{/contact_contacts}
+
+				</ul>
+
+			</div>
+
+		</div>
+
+	{/if}
+
+	<div class="form">
+
+		{exp:freeform:form
+			form_name='contact'
+			return='/about/contact/contact-thank-you'
+			recipients='yes'
+			recipient1='Flexible Spending Account (FSA)|askpenny@chard-snyder.com'
+			recipient2='Health Reimbursement Arrangement (HRA)|askpenny@chard-snyder.com'
+			recipient3='Health Savings Account (HSA)|askpenny@chard-snyder.com'
+			recipient4='Transportation &amp; Parking (TRP)|askpenny@chard-snyder.com'
+			recipient5='COBRA|COBRA@chard-snyder.com'
+			recipient6='Retiree Billing|retireebilling@chard-snyder.com'
+			recipient7='Direct Billing|directbilling@chard-snyder.com'
+			recipient8='Chard Snyder Marketplace|COBRA@chard-snyder.com'
+			recipient9='FMLA Administration|FMLA@chard-snyder.com'
+			recipient10='Plan Document Services|askpenny@chard-snyder.com'
+			recipient11='Careers|HumanResources@chard-snyder.com'
+			recipient12='Media/Marketing|marketing@chard-snyder.com'
+		}
+
+			<ul>
+
+				<li>
+
+					<label for="name">Name</label>
+
+					<input type="text" name="name" id="name" />
+
+				</li>
+
+				<li>
+
+					<label for="email">Email</label>
+
+					<input type="email" name="email" id="email" />
+
+				</li>
+
+				<li>
+
+					<label for="phone">Phone</label>
+
+					<input type="tel" name="phone" id="phone" />
+
+				</li>
+
+				<li>
+
+					<label for="company_name">Company Name</label>
+
+					<input type="text" name="company_name" id="company_name" />
+
+				</li>
+
+				<li>
+
+					<label for="your_role">Your Role</label>
+
+					<select name="your_role" id="your_role">
+
+						<option>Select</option>
+						<option value="Employee">Employee</option>
+						<option value="Employer">Employer</option>
+						<option value="Advisor">Advisor</option>
+						<option value="Other">Other</option>
+
+					</select>
+
+				</li>
+
+				<li>
+
+					<label for="recipient_email">How Can We Help?</label>
+
+					<select name="recipient_email" id="recipient_email">
+
+						<option>Select</option>
+						{freeform:recipients}
+							<option value="{freeform:recipient_value}">{freeform:recipient_name}</option>
+						{/freeform:recipients}
+
+					</select>
+
+				</li>
+
+				<li>
+
+					<label for="message">Message</label>
+
+					<textarea name="message"></textarea>
+
+				</li>
+
+			</ul>
+
+			<button type="submit">Send</button>
+
+		{/exp:freeform:form}
+
+	</div>
+
+{/exp:channel:entries}

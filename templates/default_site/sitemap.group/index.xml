@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+	{exp:channel:entries channel='home'}
+
+		<url>
+
+			<loc>{path=''}</loc>
+
+			<lastmod>{edit_date format='%Y-%m-%d'}</lastmod>
+
+			<changefreq>weekly</changefreq>
+
+			<priority>0.8</priority>
+
+		</url>
+
+	{/exp:channel:entries}
+
+	{exp:channel:entries channel='pages|our_leadership_landing|careers_landing|careers|news_and_events_landing|news_and_events|testimonials_landing|support_center_landing|support_center_types|faqs|videos|forms_and_resources|tools_and_apps|compliance_watch|contact' entry_id='not 241|242|243'}
+
+		<url>
+
+			<loc>{page_url}</loc>
+
+			<lastmod>{edit_date format='%Y-%m-%d'}</lastmod>
+
+			<changefreq>weekly</changefreq>
+
+			<priority>0.8</priority>
+
+		</url>
+
+	{/exp:channel:entries}
+
+	{exp:channel:entries channel='our_leadership'}
+
+		<url>
+
+			<loc>{page_url}</loc>
+
+			<lastmod>{edit_date format='%Y-%m-%d'}</lastmod>
+
+			<changefreq>weekly</changefreq>
+
+			<priority>0.8</priority>
+
+		</url>
+
+	{/exp:channel:entries}
+
+</urlset>

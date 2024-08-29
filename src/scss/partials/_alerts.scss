@@ -1,0 +1,57 @@
+
+/*-------------------------------------------
+	Alerts
+-------------------------------------------*/
+
+
+#alerts {
+
+	padding: 5px 0;
+	background: #f5f49e;
+
+	.wrap {
+
+		width: 100%;
+		max-width: 1280px;
+		margin: 0 auto;
+		padding: 0 20px;
+
+		@media screen and (min-width: 500px) {
+
+			padding: 0 30px;
+
+		}
+
+		@media screen and (min-width: 700px) {
+
+			padding: 0 45px;
+
+		}
+
+	}
+
+		.alert {
+
+			padding: 5px 0;
+			text-align: center;
+
+		}
+
+			p {
+
+				margin: 0;
+				@include font-size(14);
+				line-height: (24/14) + em;
+
+			}
+
+				a {
+
+					color: $charcoal;
+					text-decoration: underline;
+
+					&:hover {}
+
+				}
+
+}

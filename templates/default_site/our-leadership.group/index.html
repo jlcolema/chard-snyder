@@ -1,0 +1,85 @@
+{layout='inc/layout'}
+
+{layout:set name='left-sidebar'}
+
+	{embed='inc/left-sidebar'}
+
+{/layout:set}
+
+{exp:channel:entries channel='our_leadership_landing' dynamic='no' limit='1'}
+
+	{if our_leadership_landing_title}
+
+		<h1>{our_leadership_landing_title}</h1>
+
+	{if:else}
+
+		<h1>{title}</h1>
+
+	{/if}
+
+	{if our_leadership_overview}
+
+		<div class="summary">
+
+			{our_leadership_overview}
+
+		</div>
+
+	{/if}
+
+	{our_leadership_content}
+
+{/exp:channel:entries}
+
+<div class="leadership">
+
+	<ul>
+
+		{exp:channel:entries channel='our_leadership' dynamic='no'}
+
+			<li>
+
+				<a href="{page_url}">
+
+					<picture>
+
+						<!--[ if IE 9 ]>
+
+							<video style="display: none;">
+
+						<![ endif ]-->
+
+							<source srcset="{our_leadership_photo:1x}" media="(min-width: 540px)">
+
+							<source srcset="{our_leadership_photo}">
+
+						<!--[ if IE 9 ]>
+
+							</video>
+
+						<![ endif ]-->
+
+						<img srcset="{our_leadership_photo}" alt="{title}" />
+
+					</picture>
+
+					<div class="">
+
+						<h2>{title}</h2>
+
+						<h3>{our_leadership_position}</h3>
+
+					</div>
+
+				</a>
+
+			</li>
+
+		{/exp:channel:entries}
+
+		<li class="placeholder"></li>
+
+	</ul>
+
+</div>

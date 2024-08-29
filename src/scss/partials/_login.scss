@@ -1,0 +1,285 @@
+
+/*-------------------------------------------
+	Login
+-------------------------------------------*/
+
+
+#login {
+
+	display: none;
+	color: $white;
+	background: $cyan;
+	transition: margin 0.35s ease-in-out;
+
+	&.open {
+
+		display: block;
+
+	}
+
+	@media screen and (min-width: 700px) {
+
+		background: linear-gradient(to right, rgb(32, 163, 213) 0%, rgb(32, 163, 213) 50%, $cyan 50%, $cyan 100%);
+
+	}
+
+	// IE 8, IE 9
+
+	.ie8 &,
+	.ie9 & {
+
+		background: linear-gradient(to right, rgb(32, 163, 213) 0%, rgb(32, 163, 213) 50%, $cyan 50%, $cyan 100%);
+
+	}
+
+	.wrap {
+
+		position: relative;
+		max-width: 1280px;
+		margin: 0 auto;
+		padding: 0;
+
+		@media screen and (min-width: 700px) {
+
+			padding: 0 45px;
+
+		}
+
+		// IE 8
+
+		.ie8 & {
+
+			width: 1280px;
+			padding: 0 45px;
+
+		}
+
+		&:after {
+
+			content: "";
+
+			width: 1px;
+			height: 100%;
+
+		}
+
+	}
+
+}
+
+		.close {
+
+			position: absolute;
+			right: 12px;
+			top: 20px;
+			@include hide-text;
+			z-index: 1;
+
+			@media screen and (min-width: 500px) {
+
+				top: 24px;
+				right: 22px;
+
+			}
+
+			@media screen and (min-width: 700px) {
+
+				display: none;
+				top: 39px;
+				right: 37px;
+
+			}
+
+			// IE 8
+
+			.ie8 & {
+
+				display: none;
+
+			}
+
+			span {
+
+				display: block;
+				width: 30px;
+				height: 30px;
+				background: url(../img/login-close.svg);
+				cursor: pointer;
+
+				.no-svg & {
+
+					background-image: url(../img/login-close.png);
+
+				}
+
+			}
+
+		}
+
+		.options {
+
+			display: block;
+
+			@media screen and (min-width: 700px) {
+
+				display: flex;
+
+				// IE 9
+
+				.ie9 & {
+
+					display: table;
+
+				}
+
+			}
+
+			// IE 8
+
+			.ie8 & {
+
+				display: table;
+
+			}
+
+		}
+
+			.option {
+
+				padding: 10px 20px 20px 20px;
+
+				@media screen and (min-width: 500px) {
+
+					padding: 15px 30px 30px 30px;
+
+				}
+
+				@media screen and (min-width: 700px) {
+
+					width: 50%;
+					padding: 30px 0 38px 0;
+
+					// IE 9
+
+					.ie9 & {
+
+						display: table-cell;
+
+					}
+
+				}
+
+				// IE 8
+
+				.ie8 & {
+
+					display: table-cell;
+					width: 50%;
+					padding: 30px 0 38px 0;
+
+				}
+
+				.title {
+
+					margin-bottom: (18/36) + em;
+					@include font-size(36);
+					line-height: (44/36) + em;
+					@include ubuntu-light;
+
+				}
+
+				ul {
+
+					margin: 0;
+					padding: 0;
+					list-style: none;
+
+				}
+
+					li {
+
+						margin: 0 0 10px 0;
+						@include font-size(14);
+						line-height: (24/14) + em;
+						@include ubuntu-bold;
+						text-transform: uppercase;
+
+						&:last-of-type {
+
+							margin: 0;
+
+						}
+
+					}
+
+						a {
+
+							display: inline-block;
+							padding: 12px 20px;
+							color: $white;
+							background: transparent;
+							border: 1px solid $white;
+							transition: color 0.35s ease-in-out, background 0.35s ease-in-out;
+
+							&:hover {
+
+								color: $cyan;
+								background: $white;
+
+							}
+
+						}
+
+			}
+
+			.employees {
+
+				background: rgb(32, 163, 213);
+				border-bottom: 1px solid rgb(105, 195, 226);
+
+				@media screen and (min-width: 700px) {
+
+					padding-right: 40px;
+					border-right: 1px solid rgb(105, 195, 226);
+					border-bottom: 0;
+
+					// IE 9
+
+					.ie9 & {
+
+						background: none;
+
+					}
+
+				}
+
+				// IE 8
+
+				.ie8 & {
+
+					padding-right: 40px;
+					background: none;
+					border-right: 1px solid rgb(105, 195, 226);
+					border-bottom: 0;
+
+				}
+
+			}
+
+			.employers {
+
+				@media screen and (min-width: 700px) {
+
+					padding-left: 40px;
+
+				}
+
+				// IE 8
+
+				.ie8 & {
+
+					padding-left: 40px;
+
+				}
+
+			}

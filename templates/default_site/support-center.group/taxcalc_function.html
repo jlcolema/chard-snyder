@@ -1,0 +1,310 @@
+<html>
+<%@ Language=VBScript %>
+<%Option Explicit%>
+<%
+
+if Request.QueryString("function") ="CalculateTaxSavings" then
+
+	dim AnnualSalary
+	dim SpouseSalary
+	dim TotalSalary
+	dim FilingStatus
+	dim StateTaxPercent
+	dim AnnualInsurancePremium
+	dim AnnualMedicalSpending
+	dim AnnualDependentCareSpending
+	dim AnnualTransportationSpending
+	dim AnnualRetirementContribution
+
+	dim InsuranceTaxSavings
+	dim MedicalTaxSavings
+	dim DependentCareTaxSavings
+	dim TransportationTaxSavings
+	dim RetirementTaxSavings
+	dim TotalTaxSavings
+
+	dim TaxMulitplier1
+	dim TaxMulitplier2
+	dim TaxMulitplier3
+	dim TaxMulitplier4
+	dim FedTaxPercentage
+	dim FICATaxPercentage
+
+	TaxMulitplier1 = 0.28
+	TaxMulitplier2 = 0.31
+	TaxMulitplier3 = 0.36
+	TaxMulitplier4 = 0.396
+
+	FICATaxPercentage = 7.65
+
+
+
+	' first calculate total annual salary, i.e. AnnualSalary + Spouse's Salary
+
+	AnnualSalary = CSng(Request.Form("AnnualSalary"))
+	SpouseSalary = CSng(Request.Form("SpouseSalary"))
+
+	TotalSalary = AnnualSalary + SpouseSalary
+
+'Response.Write("Annual Salary = " & AnnualSalary & "<BR>")
+'Response.Write("Spouse Salary = " & SpouseSalary & "<BR>")
+'Response.Write("Total Salary = " & TotalSalary & "<BR>")
+
+
+	' Calculate Tax Savings for each category of Filing Status
+
+	StateTaxPercent = CSng(Request.Form("StateTaxPercent"))
+
+'Response.Write("Filing Status = " & Request.Form("FilingStatus") & "<BR>")
+'Response.Write("State Tax = " & StateTaxPercent & "<BR>")
+
+	if Request.Form("FilingStatus") = "Single" then
+
+		if AnnualSalary <= 25750 then
+ 			FedTaxPercentage = 15.0
+	 	Elseif   25750 < AnnualSalary and AnnualSalary <= 62450 then
+			FedTaxPercentage = 100*(TaxMulitplier1 * AnnualSalary - 3348)/AnnualSalary
+ 	 	Elseif   62450 < AnnualSalary and AnnualSalary <= 130250 then
+			FedTaxPercentage = 100*(TaxMulitplier2 * AnnualSalary - 5221)/AnnualSalary
+	 	Elseif   130250 < AnnualSalary and AnnualSalary <= 283150 then
+			FedTaxPercentage = 100*(TaxMulitplier3 * AnnualSalary - 11734)/AnnualSalary
+		Elseif AnnualSalary > 283150 then
+			FedTaxPercentage = 100*(TaxMulitplier4 * AnnualSalary - 21927)/AnnualSalary
+		End if
+
+	elseif Request.Form("FilingStatus") = "MarriedFilingJointly" then
+
+		if TotalSalary <= 43050 then
+ 			FedTaxPercentage = 15.0
+	 	Elseif   43050 < TotalSalary and TotalSalary <= 104050 then
+			FedTaxPercentage = 100*(TaxMulitplier1 * TotalSalary - 5597)/TotalSalary
+ 	 	Elseif   104050 < TotalSalary and TotalSalary <= 158550 then
+			FedTaxPercentage = 100*(TaxMulitplier2 * TotalSalary - 8718)/TotalSalary
+	 	Elseif   158550 < TotalSalary and TotalSalary <= 283150 then
+			FedTaxPercentage = 100*(TaxMulitplier3 * TotalSalary - 16646)/TotalSalary
+		Elseif TotalSalary > 283150 then
+			FedTaxPercentage = 100*(TaxMulitplier4 * TotalSalary - 26839)/TotalSalary
+		End if
+
+	elseif Request.Form("FilingStatus") = "MarriedFilingSeparately" then
+
+		if AnnualSalary <= 21525 then
+ 			FedTaxPercentage = 15.0
+	 	Elseif   21525 < AnnualSalary and AnnualSalary <= 52025 then
+			FedTaxPercentage = 100*(TaxMulitplier1 * AnnualSalary - 2798)/AnnualSalary
+ 	 	Elseif   52025 < AnnualSalary and AnnualSalary <= 79275 then
+			FedTaxPercentage = 100*(TaxMulitplier2 * AnnualSalary - 4359)/AnnualSalary
+	 	Elseif   79275 < AnnualSalary and AnnualSalary <= 141575 then
+			FedTaxPercentage = 100*(TaxMulitplier3 * AnnualSalary - 8323)/AnnualSalary
+		Elseif AnnualSalary > 141575 then
+			FedTaxPercentage = 100*(TaxMulitplier4 * AnnualSalary - 13420)/AnnualSalary
+		End if
+
+	elseif Request.Form("FilingStatus") = "HeadOfHousehold" then
+
+		if AnnualSalary <= 34550 then
+ 			FedTaxPercentage = 15.0
+	 	Elseif   34550 < AnnualSalary and AnnualSalary <= 89150 then
+			FedTaxPercentage = 100*(TaxMulitplier1 * AnnualSalary - 4492)/AnnualSalary
+ 	 	Elseif   89150 < AnnualSalary and AnnualSalary <= 144400 then
+			FedTaxPercentage = 100*(TaxMulitplier2 * AnnualSalary - 7166)/AnnualSalary
+	 	Elseif   144400 < AnnualSalary and AnnualSalary <= 283150 then
+			FedTaxPercentage = 100*(TaxMulitplier3 * AnnualSalary - 14386)/AnnualSalary
+		Elseif AnnualSalary > 283150 then
+			FedTaxPercentage = 100*(TaxMulitplier4 * AnnualSalary - 24580)/AnnualSalary
+		End if
+
+	End if
+
+'Response.Write("FedTaxPercent = " & FedTaxPercentage & "<BR>")
+
+	' Calculate Tax Savings for each Tax Saving Category
+
+	' Section 125 Insurance Premiums
+
+	AnnualInsurancePremium = Request.Form("AnnualInsurancePremium")
+
+	InsuranceTaxSavings =  AnnualInsurancePremium * ((FedTaxPercentage + StateTaxPercent + FICATaxPercentage)/100.0)
+
+'Response.Write("insurance savings = " & Round(InsuranceTaxSavings,2) & "<BR>")
+
+	' Section 125 Medical Spending
+
+	AnnualMedicalSpending = Request.Form("AnnualMedicalSpending")
+	MedicalTaxSavings = AnnualMedicalSpending * ((FedTaxPercentage + StateTaxPercent + FICATaxPercentage)/100.0)
+
+'Response.Write("medical savings = " & Round(MedicalTaxSavings,2) & "<BR>")
+
+	' Section 125 Dependent Care
+
+	AnnualDependentCareSpending = Request.Form("AnnualDependentCareSpending")
+	DependentCareTaxSavings = AnnualDependentCareSpending * ((FedTaxPercentage + StateTaxPercent + FICATaxPercentage)/100.0)
+
+'Response.Write("dependent care savings = " & Round(DependentCareTaxSavings,2) & "<BR>")
+
+	' Section 132 Parking Dependent Care Account
+
+	AnnualTransportationSpending = Request.Form("AnnualTransportationSpending")
+	TransportationTaxSavings = AnnualTransportationSpending * ((FedTaxPercentage + StateTaxPercent + FICATaxPercentage)/100.0)
+
+'Response.Write("transportation savings = " & Round(TransportationTaxSavings,2) & "<BR>")
+
+	' 401(k) Retirement Savings -- note: this does not include the FICA Tax Percentage
+
+	AnnualRetirementContribution = Request.Form("AnnualRetirementContribution")
+	RetirementTaxSavings = AnnualRetirementContribution * ((FedTaxPercentage + StateTaxPercent)/100.0)
+
+'Response.Write("401k savings = " & Round(RetirementTaxSavings,2) & "<BR>")
+
+	' Calculate Total Tax Savings
+
+	TotalTaxSavings = InsuranceTaxSavings + MedicalTaxSavings + DependentCareTaxSavings + TransportationTaxSavings + RetirementTaxSavings
+	Response.Redirect("tax-savings-results.html?TotalTaxSavings=" & TotalTaxSavings)
+
+'Response.Write("total tax savings = " & Round(TotalTaxSavings, 0))
+
+End if
+%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<head>
+<title>Tax Savings Function</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<meta http-equiv="Content-Style-Type" content="text/css">
+<script language="javascript" type="text/javascript">
+<!--
+
+	var AnnualSalary = 0;
+	var SpouseSalary = 0;
+	var TotalSalary = 0;
+	var FilingStatus;
+	var StateTaxPercent = 0;
+	var AnnualInsurancePremium = 0;
+	var AnnualMedicalSpending = 0;
+	var AnnualDependentCareSpending = 0;
+	var AnnualTransportationSpending = 0;
+	var AnnualRetirementContribution = 0;
+
+	var InsuranceTaxSavings = 0;
+	var MedicalTaxSavings = 0;
+	var DependentCareTaxSavings = 0;
+	var TransportationTaxSavings = 0;
+	var RetirementTaxSavings = 0;
+	var TotalTaxSavings = 0;
+	var TaxMulitplier1 = 0.28;
+	var TaxMulitplier2 = 0.31;
+	var TaxMulitplier3 = 0.36;
+	var TaxMulitplier4 = 0.396;
+	var FedTaxPercentage = 0;
+	var FICATaxPercentage = 7.65;
+
+	// parse query string to get form values
+
+	url = self.location.href;
+	queryStringStart = url.indexOf('?') + 1;
+	urlStringToSplit = self.location.href.substring(queryStringStart);
+
+	arrayOfStrings = urlStringToSplit.split('&');
+
+	// first calculate total annual salary, i.e. AnnualSalary + Spouse's Salary
+
+	AnnualSalary = parseFloat(arrayOfStrings[0]);
+	SpouseSalary =  parseFloat(arrayOfStrings[1]);
+	TotalSalary = AnnualSalary + SpouseSalary;
+
+	// Calculate Tax Savings for each category of Filing Status
+
+	StateTaxPercent = parseFloat(arrayOfStrings[3]);
+
+	if (arrayOfStrings[2] == "Single" )
+	{
+		if (AnnualSalary <= 25750 )
+ 			FedTaxPercentage = 15.0;
+	 	else if   (25750 < AnnualSalary && AnnualSalary <= 62450 )
+			FedTaxPercentage = 100*(TaxMulitplier1 * AnnualSalary - 3348)/AnnualSalary;
+ 	 	else if   (62450 < AnnualSalary && AnnualSalary <= 130250 )
+			FedTaxPercentage = 100*(TaxMulitplier2 * AnnualSalary - 5221)/AnnualSalary;
+	 	else if  ( 130250 < AnnualSalary && AnnualSalary <= 283150 )
+			FedTaxPercentage = 100*(TaxMulitplier3 * AnnualSalary - 11734)/AnnualSalary;
+		else if (AnnualSalary > 283150 )
+			FedTaxPercentage = 100*(TaxMulitplier4 * AnnualSalary - 21927)/AnnualSalary;
+
+	}
+	else if (arrayOfStrings[2] == "MarriedFilingJointly" )
+	{
+		if (TotalSalary <= 43050 )
+ 			FedTaxPercentage = 15.0;
+	 	else if   (43050 < TotalSalary && TotalSalary <= 104050 )
+			FedTaxPercentage = 100*(TaxMulitplier1 * TotalSalary - 5597)/TotalSalary;
+ 	 	else if   (104050 < TotalSalary && TotalSalary <= 158550 )
+			FedTaxPercentage = 100*(TaxMulitplier2 * TotalSalary - 8718)/TotalSalary;
+	 	else if   (158550 < TotalSalary && TotalSalary <= 283150 )
+			FedTaxPercentage = 100*(TaxMulitplier3 * TotalSalary - 16646)/TotalSalary;
+		else if (TotalSalary > 283150 )
+			FedTaxPercentage = 100*(TaxMulitplier4 * TotalSalary - 26839)/TotalSalary;
+
+	}
+	else if (arrayOfStrings[2] == "MarriedFilingSeparately")
+	{
+		if (AnnualSalary <= 21525 )
+ 			FedTaxPercentage = 15.0;
+	 	else if   (21525 < AnnualSalary && AnnualSalary <= 52025 )
+			FedTaxPercentage = 100*(TaxMulitplier1 * AnnualSalary - 2798)/AnnualSalary;
+ 	 	else if   (52025 < AnnualSalary && AnnualSalary <= 79275 )
+			FedTaxPercentage = 100*(TaxMulitplier2 * AnnualSalary - 4359)/AnnualSalary;
+	 	else if   (79275 < AnnualSalary && AnnualSalary <= 141575 )
+			FedTaxPercentage = 100*(TaxMulitplier3 * AnnualSalary - 8323)/AnnualSalary;
+		else if (AnnualSalary > 141575 )
+			FedTaxPercentage = 100*(TaxMulitplier4 * AnnualSalary - 13420)/AnnualSalary;
+
+	}
+	else if (arrayOfStrings[2] == "HeadOfHousehold" )
+	{
+		if (AnnualSalary <= 34550 )
+ 			FedTaxPercentage = 15.0;
+	 	else if   (34550 < AnnualSalary && AnnualSalary <= 89150 )
+			FedTaxPercentage = 100*(TaxMulitplier1 * AnnualSalary - 4492)/AnnualSalary;
+ 	 	else if   (89150 < AnnualSalary && AnnualSalary <= 144400 )
+			FedTaxPercentage = 100*(TaxMulitplier2 * AnnualSalary - 7166)/AnnualSalary;
+	 	else if   (144400 < AnnualSalary && AnnualSalary <= 283150 )
+			FedTaxPercentage = 100*(TaxMulitplier3 * AnnualSalary - 14386)/AnnualSalary;
+		else if (AnnualSalary > 283150 )
+			FedTaxPercentage = 100*(TaxMulitplier4 * AnnualSalary - 24580)/AnnualSalary;
+
+	}
+
+	// Calculate Tax Savings for each Tax Saving Category
+	// Section 125 Insurance Premiums
+
+	AnnualInsurancePremium = parseFloat(arrayOfStrings[4]);
+	InsuranceTaxSavings =  AnnualInsurancePremium * ((FedTaxPercentage + StateTaxPercent + FICATaxPercentage)/100.0);
+
+	// Section 125 Medical Spending
+
+	AnnualMedicalSpending = parseFloat(arrayOfStrings[5]);
+	MedicalTaxSavings = AnnualMedicalSpending * ((FedTaxPercentage + StateTaxPercent + FICATaxPercentage)/100.0);
+
+	// Section 125 Dependent Care
+
+	AnnualDependentCareSpending = parseFloat(arrayOfStrings[6]);
+	DependentCareTaxSavings = AnnualDependentCareSpending * ((FedTaxPercentage + StateTaxPercent + FICATaxPercentage)/100.0);
+
+	// Section 132 Parking Dependent Care Account
+
+	AnnualTransportationSpending = parseFloat(arrayOfStrings[7]);
+	TransportationTaxSavings = AnnualTransportationSpending * ((FedTaxPercentage + StateTaxPercent + FICATaxPercentage)/100.0);
+
+	// 401(k) Retirement Savings -- note: this does not include the FICA Tax Percentage
+
+	AnnualRetirementContribution = parseFloat(arrayOfStrings[8]);
+	RetirementTaxSavings = AnnualRetirementContribution * ((FedTaxPercentage + StateTaxPercent)/100.0);
+
+	// Calculate Total Tax Savings
+
+	TotalTaxSavings = InsuranceTaxSavings + MedicalTaxSavings + DependentCareTaxSavings + TransportationTaxSavings + RetirementTaxSavings;
+
+//-->
+</script>
+
+</head>
+</html>
+

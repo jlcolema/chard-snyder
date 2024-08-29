@@ -1,0 +1,138 @@
+
+//-------------------------------------------
+//	Fonts
+//-------------------------------------------
+
+
+// Font Family: Ubuntu
+// Service: Google Fonts
+// URL: https://www.google.com/fonts/specimen/Ubuntu
+
+
+$ubuntu: "Ubuntu", "Helvetica Neue", Helvetica, Arial, sans-serif;
+
+
+// Light
+
+
+@mixin ubuntu-light {
+
+	font-family: $ubuntu;
+	font-weight: 300;
+	font-style: normal;
+
+}
+
+
+// Light Italic
+
+
+@mixin ubuntu-light-italic {
+
+	font-family: $ubuntu;
+	font-weight: 300;
+	font-style: italic;
+
+}
+
+
+// Normal
+
+
+@mixin ubuntu-normal {
+
+	font-family: $ubuntu;
+	font-weight: 400;
+	font-style: normal;
+
+}
+
+
+// Normal Italic
+
+
+@mixin ubuntu-normal-italic {
+
+	font-family: $ubuntu;
+	font-weight: 400;
+	font-style: italic;
+
+}
+
+
+// Medium
+
+
+@mixin ubuntu-medium {
+
+	font-family: $ubuntu;
+	font-weight: 500;
+	font-style: normal;
+
+}
+
+
+// Medium Italic
+
+
+@mixin ubuntu-medium-italic {
+
+	font-family: $ubuntu;
+	font-weight: 500;
+	font-style: italic;
+
+}
+
+
+// Bold
+
+
+@mixin ubuntu-bold {
+
+	font-family: $ubuntu;
+	font-weight: 700;
+	font-style: normal;
+
+}
+
+
+// Bold Italic
+
+
+@mixin ubuntu-bold-italic {
+
+	font-family: $ubuntu;
+	font-weight: 700;
+	font-style: italic;
+
+}
+
+
+// Font Family: Jenna Sue
+// Service: Jenna Sue
+// URL: http://www.jennasuedesign.com/jenna-sue-webfont/
+
+
+$jenna-sue: "Jenna Sue", Georgia, "Times New Roman", Times, serif;
+
+
+@font-face {
+
+	font-family: "Jenna Sue";
+
+	src: url("../fonts/jenna-sue/jenna-sue.eot");
+	src: url("../fonts/jenna-sue/jenna-sue.eot?#iefix") format("embedded-opentype"),
+		 url("../fonts/jenna-sue/jenna-sue.woff") format("woff"),
+		 url("../fonts/jenna-sue/jenna-sue.ttf") format("truetype");
+
+	font-weight: normal;
+	font-style: normal;
+
+}
+
+
+@mixin jenna-sue {
+
+	font-family: "Jenna Sue", Georgia, "Times New Roman", Times, serif;
+
+}

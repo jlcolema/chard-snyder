@@ -1,0 +1,524 @@
+<!doctype html>
+
+<!--[if IE 8]>
+
+	<html class="ie ie8 no-js" lang="en">
+
+<![endif]-->
+
+<!--[if IE 9]>
+
+	<html class="ie ie9 no-js" lang="en">
+
+<![endif]-->
+
+<!--[if gt IE 9]><!-->
+
+	<html class="no-js" lang="en">
+
+<!--<![endif]-->
+
+<head>
+
+	<meta charset="utf-8" />
+
+	<!--[if IE]>
+
+		<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+
+	<![endif]-->
+
+	{if segment_1 == ''}
+
+		{exp:channel:entries channel='home' dynamic='no' limit='1'}
+
+			{exp:seo_lite entry_id='{entry_id}'}
+
+		{/exp:channel:entries}
+
+	{if:else}
+
+		{exp:seo_lite use_last_segment='yes'}
+
+	{/if}
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<meta name="format-detection" content="telephone=no" />
+
+	<link rel="apple-touch-icon" sizes="57x57" href="/assets/icons/apple-icon-57x57.png" />
+	<link rel="apple-touch-icon" sizes="60x60" href="/assets/icons/apple-icon-60x60.png" />
+	<link rel="apple-touch-icon" sizes="72x72" href="/assets/icons/apple-icon-72x72.png" />
+	<link rel="apple-touch-icon" sizes="76x76" href="/assets/icons/apple-icon-76x76.png" />
+	<link rel="apple-touch-icon" sizes="114x114" href="/assets/icons/apple-icon-114x114.png" />
+	<link rel="apple-touch-icon" sizes="120x120" href="/assets/icons/apple-icon-120x120.png" />
+	<link rel="apple-touch-icon" sizes="144x144" href="/assets/icons/apple-icon-144x144.png" />
+	<link rel="apple-touch-icon" sizes="152x152" href="/assets/icons/apple-icon-152x152.png" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-icon-180x180.png" />
+
+	<link rel="icon" type="image/png" sizes="192x192"  href="/assets/icons/android-icon-192x192.png" />
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png" />
+	<link rel="icon" type="image/png" sizes="96x96" href="/assets/icons/favicon-96x96.png" />
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png" />
+
+	<link rel="manifest" href="/manifest.json" />
+
+	<meta name="msapplication-TileColor" content="#ffffff" />
+	<meta name="msapplication-TileImage" content="/assets/icons/ms-icon-144x144.png" />
+	<meta name="theme-color" content="#ffffff" />
+
+	<link type="text/css" href="/assets/css/screen.css" rel="stylesheet" media="screen, projection" />
+
+	<link type="text/css" href="/assets/css/print.css" rel="stylesheet" media="print" />
+
+	<link type="text/css" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300italic,400,400italic,500,500italic,700,700italic" rel="stylesheet" media="screen, projection" />
+
+	<link type="application/rss+xml" href="" rel="alternate" />
+
+	<!--[if IE 8]>
+
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+
+		<script type="text/javascript" src="/assets/js/selectivizr.js"></script>
+
+	<![endif]-->
+
+	<!-- Twitter Cards (https://dev.twitter.com/cards/markup) -->
+
+	<meta name="twitter:card" content="" />
+	<meta name="twitter:site" content="" />
+	<meta name="twitter:creator" content="" />
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:description" content="" />
+	<meta name="twitter:image" content="" />
+
+	<!-- Facebook Open Graph (https://developers.facebook.com/docs/sharing/webmasters#markup) -->
+
+	<meta property="og:url" content="" />
+	<meta property="og:title" content="" />
+	<meta property="og:site_name" content="" />
+	<meta property="og:description" content="" />
+	<meta property="og:image" content="" />
+
+</head>
+
+<body id="{if segment_1 == ''}home{/if}" class="{if layout:left-sidebar}left-sidebar{if:elseif (layout:category-sidebar OR layout:contact-sidebar)}right-sidebar{if:else}full-width{/if}">
+
+	{exp:channel:entries channel='alerts' dynamic='no' orderby='date' disable='categories|category_fields|member_data|pagination'}
+
+		{if count >= 1}
+
+			<div id="alerts">
+
+				<div class="wrap">
+
+		{/if}
+
+					<div class="alert">
+
+						<p>{alert_description} <a href="{alert_more_information}">Click here for more information</a>.</p>
+
+					</div>
+
+		{if count >=1}
+
+				</div>
+
+			</div>
+
+		{/if}
+
+	{/exp:channel:entries}
+
+	{exp:channel:entries channel='login' dynamic='no' limit='1'}
+
+		<div id="login">
+
+			<div class="wrap">
+
+				<div class="close">
+
+					<span>Close</span>
+
+				</div>
+
+				<div class="options">
+
+					<div class="option employees">
+
+						<div class="title">Employees</div>
+
+						<ul>
+
+							{login_employees}
+
+								<li>
+
+									<a href="{login_employees:login_employee_url}" rel="external">{login_employees:login_employee_title}</a>
+
+								</li>
+
+							{/login_employees}
+
+						</ul>
+
+					</div>
+
+					<div class="option employers">
+
+						<div class="title">Employers</div>
+
+						<ul>
+
+							{login_employers}
+
+								<li>
+
+									<a href="{login_employers:login_employer_url}" rel="external">{login_employers:login_employer_title}</a>
+
+								</li>
+
+							{/login_employers}
+
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	{/exp:channel:entries}
+
+	<header id="header" role="banner">
+
+		<div class="wrap">
+
+			<div id="logo">
+
+				<a href="{path='site_index'}">
+
+					{site_name}
+
+				</a>
+
+			</div>
+
+			<nav id="nav" role="navigation">
+
+				<div class="toggle">
+
+					<span>Menu</span>
+
+				</div>
+
+				<ul id="nav-sub">
+
+					<li class="{if segment_1 == 'benefits' AND segment_2 != ''}parent-active {/if}{if segment_1 == 'benefits' AND segment_2 == ''}active {/if}has-children first">
+
+						<a href="/benefits/">Benefits</a>
+
+						{exp:structure:nav start_from="/benefits/" show_depth="1" max_depth="1" css_id='none' current_class="active"}
+
+					</li>
+
+					<li class="{if segment_1 == 'employers-and-advisors' AND segment_2 != ''}parent-active {/if}{if segment_1 == 'employers-and-advisors' AND segment_2 == ''}active {/if}has-children">
+
+						<a href="/employers-and-advisors/">Employers &amp; Advisors</a>
+
+						{exp:structure:nav start_from="/employers-and-advisors/" show_depth="1" max_depth="1" css_id='none' current_class="active"}
+
+					</li>
+
+					<li class="{if segment_1 == 'support-center' AND segment_2 != ''}parent-active {/if}{if segment_1 == 'support-center' AND segment_2 == ''}active {/if}has-children">
+
+						<a href="/support-center/">Support Center</a>
+
+						{exp:structure:nav start_from="/support-center/" show_depth="1" max_depth="1" css_id='none' current_class="active"}
+
+					</li>
+
+					<li class="{if segment_1 == 'about' AND segment_2 != ''}parent-active {/if}{if segment_1 == 'about' AND segment_2 == ''}active {/if}has-children last">
+
+						<a href="/about/">About</a>
+
+						{exp:structure:nav start_from="/about/" show_depth="1" max_depth="1" css_id='none' current_class="active"}
+
+					</li>
+
+				</ul>
+
+			</nav>
+
+			<div class="login-toggle">
+
+				<span>Login</span>
+
+			</div>
+
+			<div id="search">
+
+				<div class="toggle">
+
+					<span>Search</span>
+
+				</div>
+
+				<div class="form">
+
+					{exp:search:simple_form channel='not advertisements|external_urls|footer|industries|login' result_page='search/results' no_result_page='search/no-results' results='10' search_in='entries'}
+
+						<label for="keywords">Search</label>
+
+						<input type="text" name="keywords" id="keywords" value="" placeholder="Search" />
+
+						<button type="submit">Search</button>
+
+					{/exp:search:simple_form}
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</header>
+
+	{if segment_1 != '' OR (segment_1 == 'support-center' AND segment_2 != '')}
+
+		<div id="breadcrumbs">
+
+			<div class="wrap">
+
+				{exp:structure:breadcrumb here_as_title='yes' separator='&rsaquo;'}
+
+			</div>
+
+		</div>
+
+	{/if}
+
+	<div id="content" role="main">
+
+		<div class="wrap">
+
+			<div class="main">
+
+				{layout:contents}
+
+			</div>
+
+			{layout:left-sidebar}
+
+			{layout:category-sidebar}
+
+			{layout:contact-sidebar}
+
+		</div>
+
+	</div>
+
+	{exp:channel:entries channel='footer' dynamic='no' limit='1'}
+
+		<footer id="footer" role="contentinfo">
+
+			<div class="wrap">
+
+				<div class="logo">
+
+					<a href="{path='site_index'}">{site_name}</a>
+
+				</div>
+
+				<div class="customer-service">
+
+					<div class="service">
+
+						{footer_cs_contact_one}
+
+					</div>
+
+					<div class="service">
+
+						{footer_cs_contact_two}
+
+					</div>
+
+				</div>
+
+				<div class="contact">
+
+					<a href="/about/contact/">Contact</a>
+
+				</div>
+
+				<div class="wben">
+
+					<a href="http://www.wbenc.org/" rel="external">Certified Women&rsquo;s Business Enterprise</a>
+
+				</div>
+
+				<div class="connect">
+
+					<ul>
+
+						<li class="linkedin">
+
+							<a href="{footer_linkedin_url}" rel="external">LinkedIn</a>
+
+						</li>
+
+						<li class="facebook">
+
+							<a href="{footer_facebook_url}" rel="external">Facebook</a>
+
+						</li>
+
+					</ul>
+
+				</div>
+
+				<p id="copyright">
+
+					<small>&copy; {current_time format="%Y"} {site_name}. All rights reserved. <a href="/about/privacy-policy/">Privacy policy</a>.</small>
+
+				</p>
+
+			</div>
+
+		</footer>
+
+	{/exp:channel:entries}
+
+	<script type="text/javascript" src="/assets/js/scripts.js"></script>
+
+	{if segment_3 == 'tax-savings-calculator' OR segment_3 == 'tool-and-app-one'}
+
+		<script Language="JavaScript" type="text/javascript">
+		<!--
+		// do input validation on form inputs
+		function checkForm()
+		{
+		// make sure they didn't enter any commas or dollar signs in the money-related fields
+				Phrase1 = document.forms["TaxSavingsCalcForm"].AnnualSalary.value;
+				CommaFound1 = Phrase1.indexOf(",");
+		  DollarSignFound1 = Phrase1.indexOf("$");
+				Phrase2 = document.forms["TaxSavingsCalcForm"].SpouseSalary.value;
+				CommaFound2 = Phrase2.indexOf(",");
+		  DollarSignFound2 = Phrase2.indexOf("$");
+				Phrase3 = document.forms["TaxSavingsCalcForm"].AnnualInsurancePremium.value;
+				CommaFound3 = Phrase3.indexOf(",");
+		  DollarSignFound3 = Phrase3.indexOf("$");
+				Phrase4 = document.forms["TaxSavingsCalcForm"].AnnualMedicalSpending.value;
+				CommaFound4 = Phrase4.indexOf(",");
+		  DollarSignFound4 = Phrase4.indexOf("$");
+				Phrase5 = document.forms["TaxSavingsCalcForm"].AnnualDependentCareSpending.value;
+				CommaFound5 = Phrase5.indexOf(",");
+		  DollarSignFound5 = Phrase5.indexOf("$");
+				Phrase6 = document.forms["TaxSavingsCalcForm"].AnnualTransportationSpending.value;
+				CommaFound6 = Phrase6.indexOf(",");
+		  DollarSignFound6 = Phrase6.indexOf("$");
+				Phrase7 = document.forms["TaxSavingsCalcForm"].AnnualRetirementContribution.value;
+				CommaFound7 = Phrase7.indexOf(",");
+		  DollarSignFound7 = Phrase7.indexOf("$");
+				if (CommaFound1 != -1 || CommaFound2 != -1 || CommaFound3 != -1 || CommaFound4 != -1 || CommaFound5 != -1 || CommaFound6 != -1 || CommaFound7 != -1)
+				{
+			alert("Please remove the comma from the dollar amount(s) you entered.");
+			return false;
+				}
+		  else if (DollarSignFound1 != -1 || DollarSignFound2 != -1 || DollarSignFound3 != -1 || DollarSignFound4 != -1 || DollarSignFound5 != -1 || DollarSignFound6 != -1 || DollarSignFound7 != -1)
+				{
+			alert("Please remove the dollar sign from the dollar amount(s) you entered.");
+			return false;
+				}
+				else if(document.forms["TaxSavingsCalcForm"].AnnualSalary.value == '')
+		  {
+			alert("You must enter your Annual Salary.");
+			document.forms["TaxSavingsCalcForm"].AnnualSalary.focus();
+			return false;
+		  }
+		  else if(!document.forms["TaxSavingsCalcForm"].FilingStatus[0].checked && !document.forms["TaxSavingsCalcForm"].FilingStatus[1].checked && !document.forms["TaxSavingsCalcForm"].FilingStatus[2].checked && !document.forms["TaxSavingsCalcForm"].FilingStatus[3].checked)
+		  {
+			alert("You must select a Filing Status.");
+			return false;
+		  }
+		//  else if(document.forms["TaxSavingsCalcForm"].FilingStatus[1].checked && document.forms["TaxSavingsCalcForm"].SpouseSalary.value == '0')
+		//  {
+		//    alert("You must enter your Spouse's Salary since you selected a Filing Status of Married Filing Jointly.");
+		//    document.forms["TaxSavingsCalcForm"].SpouseSalary.focus();
+		//    return false;
+		//  }
+		  else if(document.forms["TaxSavingsCalcForm"].StateTaxPercent.value == '')
+		  {
+			alert("You must enter your State Income Tax Percentage.");
+			document.forms["TaxSavingsCalcForm"].StateTaxPercent.focus();
+			return false;
+		  }
+		//  else if(document.forms["TaxSavingsCalcForm"].AnnualInsurancePremium.value == '0')
+		//  {
+		//    alert("You must enter the annual amount spent on payroll deducted insurance premiums.");
+		//    document.forms["TaxSavingsCalcForm"].AnnualInsurancePremium.focus();
+		//    return false;
+		//  }
+		//  else if(document.forms["TaxSavingsCalcForm"].AnnualMedicalSpending.value == '0')
+		//  {
+		//    alert("You must the annual amount in your S125 Health Flexible Spending Account.");
+		//    document.forms["TaxSavingsCalcForm"].AnnualMedicalSpending.focus();
+		//    return false;
+		//  }
+		//  else if(document.forms["TaxSavingsCalcForm"].AnnualDependentCareSpending.value == '0')
+		//  {
+		//    alert("You must the annual amount in your S125 Dependent Care Spending Account.");
+		//    document.forms["TaxSavingsCalcForm"].AnnualDependentCareSpending.focus();
+		//    return false;
+		//  }
+		//  else if(document.forms["TaxSavingsCalcForm"].AnnualTransportationSpending.value == '0')
+		//  {
+		//    alert("You must the annual amount in your S132 Tranportation Reimbursement Plan.");
+		//    document.forms["TaxSavingsCalcForm"].AnnualTransportationSpending.focus();
+		//    return false;
+		//  }
+		//  else if(document.forms["TaxSavingsCalcForm"].AnnualRetirementContribution.value == '0')
+		//  {
+		//    alert("You must the annual amount you defer into your 401k Retirement Savings Plan.");
+		//    document.forms["TaxSavingsCalcForm"].AnnualRetirementContribution.focus();
+		//    return false;
+		//  }
+		  else if(!document.forms["TaxSavingsCalcForm"].FilingStatus[1].checked && document.forms["TaxSavingsCalcForm"].SpouseSalary.value != '0')
+		  {
+		//    alert("resetting spouse salary to zero");
+			document.forms["TaxSavingsCalcForm"].SpouseSalary.value = 0;
+		  }
+		  AnnualSalary = document.forms["TaxSavingsCalcForm"].AnnualSalary.value;
+		  SpouseSalary = document.forms["TaxSavingsCalcForm"].SpouseSalary.value;
+
+		  for (i = 0; i < 4; i++)
+		  {
+			if (document.forms["TaxSavingsCalcForm"].FilingStatus[i].checked)
+			{
+			  TaxFilingStatus = document.forms["TaxSavingsCalcForm"].FilingStatus[i].value;
+			}
+		  }
+
+		  StateTaxPercent = document.forms["TaxSavingsCalcForm"].StateTaxPercent.value;
+		  AnnualInsurancePremium = document.forms["TaxSavingsCalcForm"].AnnualInsurancePremium.value;
+		  AnnualMedicalSpending = document.forms["TaxSavingsCalcForm"].AnnualMedicalSpending.value;
+		  AnnualDependentCareSpending = document.forms["TaxSavingsCalcForm"].AnnualDependentCareSpending.value;
+		  AnnualTransportationSpending = document.forms["TaxSavingsCalcForm"].AnnualTransportationSpending.value;
+		  AnnualRetirementContribution = document.forms["TaxSavingsCalcForm"].AnnualRetirementContribution.value;
+
+		  self.location = "/support-center/tax-savings-results?" + AnnualSalary + '&' + SpouseSalary + '&' + TaxFilingStatus + '&' + StateTaxPercent + '&' + AnnualInsurancePremium + '&' + AnnualMedicalSpending + '&' + AnnualDependentCareSpending + '&' + AnnualTransportationSpending + '&' + AnnualRetirementContribution;
+		  return true;
+
+		}
+
+		//-->
+		</script>
+
+	{/if}
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+{layout='inc/layout'}
+
+{layout:set name='left-sidebar'}
+
+	{embed='inc/left-sidebar'}
+
+{/layout:set}
+
+{exp:channel:entries channel='careers' limit='1'}
+
+	{if career_title_override}
+
+		<h1>{career_title_override}</h1>
+
+	{if:else}
+
+		<h1>{title}</h1>
+
+	{/if}
+
+	{if career_overview}
+
+		<div class="summary">
+
+			{career_overview}
+
+		</div>
+
+	{/if}
+
+	{career_description}
+
+	{if career_application}
+
+		<div class="download-application">
+
+			<h2>Ready to Apply?</h2>
+
+			<p>Download and complete the application, then return it to our HR Department and we will be in touch.</p>
+
+			<div class="more">
+
+				<a href="{career_application}">Download Application</a>
+
+			</div>
+
+		</div>
+
+	{/if}
+
+{/exp:channel:entries}

@@ -1,0 +1,602 @@
+
+/*-------------------------------------------
+	Footer
+-------------------------------------------*/
+
+
+#footer {
+
+	padding: 180px 0 25px 0;
+	color: $white;
+	background: rgb(0, 48, 67);
+
+	@media screen and (min-width: 700px) {
+
+		padding: 40px 0 25px 0;
+
+	}
+
+	// IE 8
+
+	.ie8 & {
+
+		padding: 40px 0 25px 0;
+
+	}
+
+	.wrap {
+
+		position: relative;
+		max-width: 1280px;
+		margin: 0 auto;
+		padding: 0 20px 0 20px;
+		@include group;
+
+		@media screen and (min-width: 500px) {
+
+			padding: 0 30px 0 30px;
+
+		}
+
+		@media screen and (min-width: 700px) {
+
+			padding: 0 45px 0 310px;
+
+		}
+
+		@media screen and (min-width: 840px) {
+
+			padding: 0 45px 0 335px;
+
+		}
+
+		@media screen and (min-width: 1000px) {
+
+			padding: 0 45px 0 405px;
+
+		}
+
+		// IE 8
+
+		.ie8 & {
+
+			width: 1280px;
+			padding: 0 45px 0 405px;
+
+		}
+
+	}
+
+}
+
+		.logo {
+
+			position: absolute;
+			left: 10px;
+			top: -145px;
+			@include hide-text;
+			z-index: 1;
+
+			@media screen and (min-width: 700px) {
+
+				left: 35px;
+				top: 0;
+
+			}
+
+			// IE 8
+
+			.ie8 & {
+
+				left: 35px;
+				top: 0;
+
+			}
+
+			a {
+
+				display: block;
+				width: 240px;
+				height: 120px;
+				background: url(../img/footer-logo.svg);
+				opacity: 0.40;
+				filter: alpha(opacity=40);
+
+				.no-svg & {
+
+					background-image: url(../img/footer-logo.png);
+
+				}
+
+				&:hover {
+
+					opacity: 0.50;
+					filter: alpha(opacity=50);
+
+				}
+
+			}
+
+		}
+
+		.contact {
+
+			float: left;
+			margin: 0 20px 35px 0;
+			@include font-size(14);
+			line-height: (24/14) + em;
+			@include ubuntu-bold;
+			text-transform: uppercase;
+			text-align: center;
+
+			@media screen and (min-width: 800px) {
+
+				margin: 0 20px 30px 0;
+
+			}
+
+			@media screen and (min-width: 1060px) {
+
+				float: none;
+				position: absolute;
+				right: 45px;
+				top: 7px;
+				margin: 0;
+				z-index: 1;
+
+			}
+
+			@media screen and (min-width: 1200px) {
+
+				right: 180px;
+
+			}
+
+			// IE 8
+
+			.ie8 & {
+
+				float: none;
+				position: absolute;
+				right: 180px;
+				top: 7px;
+				margin: 0;
+				z-index: 1;
+
+			}
+
+			a {
+
+				display: block;
+				width: 115px;
+				height: 50px;
+				padding: 12px 0 0 0;
+				color: $teal;
+				background: transparent;
+				border: 1px solid $teal;
+				transition: color 0.35s ease-in-out, background 0.35s ease-in-out;
+
+				@media screen and (min-width: 1200px) {
+
+					width: 120px;
+
+				}
+
+				// IE 8
+
+				.ie8 & {
+
+					width: 120px;
+
+				}
+
+				&:hover {
+
+					color: $white;
+					background: $teal;
+
+				}
+
+			}
+
+		}
+
+		.wben {
+
+			float: left;
+			margin: 0 0 35px 0;
+			@include hide-text;
+
+			@media screen and (min-width: 800px) {
+
+				margin: 0 0 30px 0;
+
+			}
+
+			@media screen and (min-width: 1060px) {
+
+				float: none;
+				position: absolute;
+				right: 45px;
+				top: 78px;
+				margin: 0;
+				z-index: 1;
+
+			}
+
+			@media screen and (min-width: 1200px) {
+
+				top: 7px;
+
+			}
+
+			// IE 8
+
+			.ie8 & {
+
+				float: none;
+				position: absolute;
+				right: 45px;
+				top: 7px;
+				margin: 0;
+				z-index: 1;
+
+			}
+
+			a {
+
+				display: block;
+				width: 115px;
+				height: 50px;
+				background: url(../img/wben.svg);
+				background-size: 115px 50px;
+
+				.no-svg & {
+
+					background-image: url(../img/wben.png);
+
+				}
+
+				&:hover {}
+
+			}
+
+		}
+
+		.customer-service {
+
+			margin: 0 0 33px 0;
+			@include group;
+
+			@media screen and (min-width: 400px) {
+
+				display: flex;
+				justify-content: flex-start;
+
+				// IE 9
+
+				.ie9 & {
+
+					@include group;
+
+				}
+
+				// IE 10
+
+				html[data-useragent*='MSIE 10.0'] & {
+
+					@include group;
+
+				}
+
+			}
+
+			.service {
+
+				margin: 0 0 25px 0;
+
+				@media screen and (min-width: 400px) {
+
+					width: 220px;
+					margin: 0 25px 0 0;
+
+					// IE 9
+
+					.ie9 & {
+
+						float: left;
+						width: 50%;
+						margin: 0;
+						padding: 0 25px 0 0;
+
+						&:last-of-type {
+
+							padding: 0;
+
+						}
+
+					}
+
+					// IE 10
+
+					html[data-useragent*='MSIE 10.0'] & {
+
+						float: left;
+						width: 50%;
+						margin: 0;
+						padding: 0 25px 0 0;
+
+						&:last-of-type {
+
+							padding: 0;
+
+						}
+
+					}
+
+				}
+
+				@media screen and (min-width: 540px) {
+
+					// IE 9
+
+					.ie9 & {
+
+						width: 220px;
+						margin: 0 25px 0 0;
+						padding: 0;
+
+					}
+
+					// IE 10
+
+					html[data-useragent*='MSIE 10.0'] & {
+
+						width: 220px;
+						margin: 0 25px 0 0;
+						padding: 0;
+
+					}
+
+				}
+
+				@media screen and (min-width: 700px) {
+
+					// IE 9
+
+					.ie9 & {
+
+						width: 50%;
+						margin: 0;
+						padding: 0 25px 0 0;
+
+						&:last-of-type {
+
+							padding: 0;
+
+						}
+
+					}
+
+					// IE 10
+
+					html[data-useragent*='MSIE 10.0'] & {
+
+						width: 50%;
+						margin: 0;
+						padding: 0 25px 0 0;
+
+						&:last-of-type {
+
+							padding: 0;
+
+						}
+
+					}
+
+				}
+
+				@media screen and (min-width: 860px) {
+
+					// IE 9
+
+					.ie9 & {
+
+						width: 220px;
+						margin: 0 25px 0 0;
+						padding: 0;
+
+					}
+
+					// IE 10
+
+					html[data-useragent*='MSIE 10.0'] & {
+
+						width: 220px;
+						margin: 0 25px 0 0;
+						padding: 0;
+
+					}
+
+				}
+
+				// IE 8
+
+				.ie8 & {
+
+					float: left;
+					width: 220px;
+					margin: 0 25px 0 0;
+
+				}
+
+				&:last-of-type {
+
+					margin: 0;
+
+				}
+
+				p {
+
+					margin: 0;
+
+				}
+
+					a {
+
+						color: $white;
+						text-decoration: none;
+
+						&:hover {}
+
+					}
+
+			}
+
+		}
+
+		.connect {
+
+			clear: left;
+			margin: 0 0 20px 0;
+
+			@media screen and (min-width: 800px) {
+
+				position: relative;
+				top: -3px;
+				float: left;
+				margin: 0 18px 0 0;
+
+			}
+
+			// IE 8
+
+			.ie8 & {
+
+				position: relative;
+				top: -3px;
+				float: left;
+				margin: 0 18px 0 0;
+
+			}
+
+			ul {
+
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				@include group;
+
+			}
+
+				li {
+
+					float: left;
+					margin: 0 8px 0 0;
+					@include hide-text;
+
+					&:last-of-type {
+
+						margin: 0;
+
+					}
+
+				}
+
+					a {
+
+						display: block;
+						width: 30px;
+						height: 30px;
+						background: url(../img/connect.svg);
+						background-size: 60px 30px;
+						transition: opacity 0.35s ease-in-out;
+
+						.no-svg & {
+
+							background-image: url(../img/connect.png);
+
+						}
+
+						&:hover {
+
+							opacity: 0.65;
+							filter: alpha(opacity=65);
+
+						}
+
+					}
+
+				.linkedin {
+
+					a {
+
+						&:hover {}
+
+					}
+
+				}
+
+				.facebook {
+
+					a {
+
+						background-position: -30px 0;
+
+						&:hover {}
+
+					}
+
+				}
+
+				.twitter {
+
+					a {
+
+						&:hover {}
+
+					}
+
+				}
+
+		}
+
+		#copyright {
+
+			margin: 0;
+			@include ubuntu-normal-italic;
+			@include font-size(14);
+			line-height: (24/14) + em;
+
+			@media screen and (min-width: 800px) {
+
+				float: left;
+
+			}
+
+			// IE 8
+
+			.ie8 & {
+
+				float: left;
+
+			}
+
+			small {}
+
+				a {
+
+					color: $white;
+					border: 1px solid transparent;
+					transition: border 0.35s ease-in-out;
+					white-space: nowrap;
+
+					&:hover {
+
+						border-bottom: 1px solid $white;
+
+					}
+
+				}
+
+		}

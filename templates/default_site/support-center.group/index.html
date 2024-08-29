@@ -1,0 +1,167 @@
+{layout='inc/layout'}
+
+{exp:channel:entries channel='support_center_landing' dynamic='no' limit='1'}
+
+	{if support_center_title}
+
+		<h1>{support_center_title}
+
+	{if:else}
+
+		<h1>{title}</h1>
+
+	{/if}
+
+	{if support_center_overview}
+
+		<div class="summary">
+
+			{support_center_overview}
+
+		</div>
+
+	{/if}
+
+{/exp:channel:entries}
+
+<div class="support-center-search">
+
+	{exp:search:advanced_form result_page='support-center/results' no_result_page='support-center/no-results' results='10' search_in='entries'}
+
+		<ul>
+
+			<li>
+
+				<label for="keywords">Search our Support Center</label>
+
+				<input type="text" name="keywords" id="keywords" value="" placeholder="Search Our Support Center" />
+
+			</li>
+
+			<li class="filter-by">
+
+				<label>Filter</label>
+
+				<select id="" class="support-type-select">
+
+					<option value="All" selected="selected">All Types</option>
+
+					{exp:channel:entries channel='faqs' dynamic='no' limit='1'}
+
+						<option value="{channel_id}">{channel}</option>
+
+					{/exp:channel:entries}
+
+					{exp:channel:entries channel='videos' dynamic='no' limit='1'}
+
+						<option value="{channel_id}">{channel}</option>
+
+					{/exp:channel:entries}
+
+					{exp:channel:entries channel='forms_and_resources' dynamic='no' limit='1'}
+
+						<option value="{channel_id}">{channel}</option>
+
+					{/exp:channel:entries}
+
+					{exp:channel:entries channel='tools_and_apps' dynamic='no' limit='1'}
+
+						<option value="{channel_id}">{channel}</option>
+
+					{/exp:channel:entries}
+
+					{exp:channel:entries channel='compliance_watch' dynamic='no' limit='1'}
+
+						<option value="{channel_id}">{channel}</option>
+
+					{/exp:channel:entries}
+
+				</select>
+
+				<select id="channel_id" name="channel_id[]" class="support-type-multiselect multiselect" multiple="multiple" style="display: none;">
+
+					<option value="All">All Types</option>
+
+					{exp:channel:entries channel='faqs' dynamic='no' limit='1'}
+
+						<option value="{channel_id}" selected="selected">{channel}</option>
+
+					{/exp:channel:entries}
+
+					{exp:channel:entries channel='videos' dynamic='no' limit='1'}
+
+						<option value="{channel_id}" data-type="videos" selected="selected">{channel}</option>
+
+					{/exp:channel:entries}
+
+					{exp:channel:entries channel='forms_and_resources' dynamic='no' limit='1'}
+
+						<option value="{channel_id}" data-type="forms-and-resources" selected="selected">{channel}</option>
+
+					{/exp:channel:entries}
+
+					{exp:channel:entries channel='tools_and_apps' dynamic='no' limit='1'}
+
+						<option value="{channel_id}" data-type="tools-and-apps" selected="selected">{channel}</option>
+
+					{/exp:channel:entries}
+
+					{exp:channel:entries channel='compliance_watch' dynamic='no' limit='1'}
+
+						<option value="{channel_id}" data-type="compliance-watch" selected="selected">{channel}</option>
+
+					{/exp:channel:entries}
+
+				</select>
+
+			</li>
+
+		</ul>
+
+		<button type="submit">Search</button>
+
+	{/exp:search:advanced_form}
+
+</div>
+
+<div class="categories">
+
+	<ul>
+
+		{exp:channel:entries channel='support_center_types' dynamic='no' sort='asc'}
+
+			<li class="category-{url_title} {switch='odd|even'}">
+
+				<a href="{page_url}">
+
+					{if support_type_icon}
+
+						<div class="icon">
+
+							<img srcset="{support_type_icon:1x} 1x, {support_type_icon} 2x" alt="{if_support_type_title}{support_type_title}{if:else}{title}{/if}" />
+
+						</div>
+
+					{/if}
+
+					{if support_type_title}
+
+						<h3>{support_type_title}</h3>
+
+					{if:else}
+
+						<h3>{title}</h3>
+
+					{/if}
+
+					{support_type_short_desc}
+
+				</a>
+
+			</li>
+
+		{/exp:channel:entries}
+
+	</ul>
+
+</div>

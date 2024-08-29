@@ -1,0 +1,415 @@
+{layout='inc/layout'}
+
+{exp:channel:entries channel='home' limit='1'}
+
+	{if home_hero}
+
+		{home_hero limit='1' orderby='random'}
+
+			<div class="hero" style="background-image: url({home_hero:home_hero_image}); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;">
+
+				<picture style="display: none;">
+
+					<!--[ if IE 9 ]>
+
+						<video style="display: none;">
+
+					<![ endif ]-->
+
+						<!--
+
+							Image Sizes Available:
+
+							1800px x 703px
+
+							1600px x 625px
+
+							1400px x 547px
+
+							100% = 1280px x 500px
+
+						-->
+
+						<source srcset="{home_hero:home_hero_image}" media="(min-width: 1800px)">
+
+						<source srcset="{home_hero:home_hero_image}" media="(min-width: 1600px)">
+
+						<source srcset="{home_hero:home_hero_image}" media="(min-width: 1400px)">
+
+						<source srcset="{home_hero:home_hero_image}" media="(min-width: 1280px)">
+
+						<source srcset="{home_hero:home_hero_image}">
+
+					<!--[ if IE 9 ]>
+
+						</video>
+
+					<![ endif ]-->
+
+					<img srcset="{home_hero:home_hero_image}" alt="{home_hero:home_hero_description}" />
+
+				</picture>
+
+			</div>
+
+		{/home_hero}
+
+	{/if}
+
+	{if home_mission_headline OR home_mission_statement}
+
+		<div class="mission">
+
+			{if home_mission_headline}
+
+				<h1>{home_mission_headline}</h1>
+
+			{/if}
+
+			{if home_mission_statement}
+
+				<div class="statement">
+
+					{home_mission_statement}
+
+				</div>
+
+			{/if}
+
+		</div>
+
+	{/if}
+
+	{if home_slides}
+
+		<div class="spending-and-savings-accounts-highlight">
+
+			<div class="slideshow">
+
+				<div class="flexslider">
+
+					<ul class="slides">
+
+						{home_slides}
+
+							<li>
+
+								<div class="inner-wrap">
+
+									<div class="photo" style="background-image: url({home_slides:home_slide_image}); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;">
+
+										<div class="inner-photo">
+
+											<div class="inner-inner-photo">
+
+												<div class="inner-inner-inner-photo">
+
+													<picture>
+
+														<!--[ if IE 9 ]>
+
+															<video style="display: none;">
+
+														<![ endif ]-->
+
+															<!--
+
+																Available Image Sizes:
+
+																1000px x 625px
+
+																800px x 500px
+
+																100% = 640px x 400px;
+
+															-->
+
+															<source srcset="{home_slides:home_slide_image}" media="(min-width: 1000px)">
+
+															<source srcset="{home_slides:home_slide_image}" media="(min-width: 800px)">
+
+															<source srcset="{home_slides:home_slide_image}">
+
+														<!--[ if IE 9 ]>
+
+															</video>
+
+														<![ endif ]-->
+
+														<img srcset="{home_slides:home_slide_image}" alt="{home_slides:home_slide_headline}" />
+
+													</picture>
+
+												</div>
+
+											</div>
+
+										</div>
+
+									</div>
+
+									<div class="overview">
+
+										<h2>{home_slides:home_slide_headline}</h2>
+
+										<div class="detail">
+
+											{home_slides:home_slide_description}
+
+										</div>
+
+										<div class="more-information">
+
+											<ul>
+
+												<li>
+
+													<a href="{home_slides:home_slide_button_one_url}">{home_slides:home_slide_button_one_title}</a>
+
+												</li>
+
+												<li>
+
+													<a href="{home_slides:home_slide_button_two_url}">{home_slides:home_slide_button_two_title}</a>
+
+												</li>
+
+											</ul>
+
+										</div>
+
+									</div>
+
+								</div>
+
+							</li>
+
+						{/home_slides}
+
+					</ul>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	{/if}
+
+	<div class="customer-service-highlight">
+
+		<div class="tabs">
+
+			<ul>
+
+				<li class="active">{home_employees_tab_title}</li>
+
+				<li>{home_employers_tab_title}</li>
+
+			</ul>
+
+		</div>
+
+		<div class="panels">
+
+			<div class="panel active">
+
+				<div class="detail">
+
+					<div class="overview">
+
+						{home_employees_tab_description}
+
+					</div>
+
+					<div class="more-information">
+
+						<ul>
+
+							{home_employees_tab_buttons}
+
+								<li>
+
+									<a href="{home_employees_tab_buttons:home_employees_tab_button_url}">{home_employees_tab_buttons:home_employees_tab_button_title}</a>
+
+								</li>
+
+							{/home_employees_tab_buttons}
+
+						</ul>
+
+					</div>
+
+				</div>
+
+				<div class="customer-service-options">
+
+					<div class="options">
+
+						{home_employees_tab_contacts}
+
+							<div class="type">
+
+								{home_employees_tab_contacts:home_employees_tab_contact_type}
+
+								<div>{home_employees_tab_contacts:home_employees_tab_contact_tel}</div>
+
+							</div>
+
+						{/home_employees_tab_contacts}
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="panel">
+
+				<div class="detail">
+
+					<div class="overview">
+
+						{home_employers_tab_description}
+
+					</div>
+
+					<div class="more-information">
+
+						<ul>
+
+							{home_employers_tab_buttons}
+
+								<li>
+
+									<a href="{home_employers_tab_buttons:home_employers_tab_button_url}">{home_employers_tab_buttons:home_employers_tab_button_title}</a>
+
+								</li>
+
+							{/home_employers_tab_buttons}
+
+						</ul>
+
+					</div>
+
+				</div>
+
+				<div class="customer-service-options">
+
+					<div class="options">
+
+						{home_employers_tab_contacts}
+
+							<div class="type">
+
+								{home_employers_tab_contacts:home_employers_tab_contact_type}
+
+								<div>{home_employers_tab_contacts:home_employers_tab_contact_tel}</div>
+
+							</div>
+
+						{/home_employers_tab_contacts}
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="industries-highlight">
+
+		<h2>{home_industries_headline}</h2>
+
+		<div class="overview">
+
+			{home_industries_description}
+
+		</div>
+
+		<div class="listing">
+
+			<ul>
+
+				{home_industries_listing}
+
+					<li class="industry colleges-and-universities">
+
+						<img srcset="{home_industries_listing:industry_icon:1x} 1x, {home_industries_listing:industry_icon} 2x" alt="{home_industries_listing:title}" />
+
+						{home_industries_listing:title}
+
+					</li>
+
+				{/home_industries_listing}
+
+			</ul>
+
+		</div>
+
+	</div>
+
+	{home_testimonial limit='1' orderby='random'}
+
+		<div class="testimonial-highlight">
+
+			<div class="quote">
+
+				<blockquote>
+
+					{home_testimonial:testimonial_quote}
+
+				</blockquote>
+
+			</div>
+
+			<div class="photo" style="background-image: url({if home_testimonial:testimonial_image}{home_testimonial:testimonial_image}{if:else}{home_testimonial_image}{/if}); background-size: cover; background-position: 50% 50%; background-repeat: no-repeat;">
+
+				<div class="inner-photo">
+
+					<picture>
+
+						{!--
+
+							Available Image Sizes:
+
+							800px x 500px
+
+							100% = 640px x 400px;
+
+						--}
+
+						<!--[ if IE 9 ]>
+
+							<video style="display: none;">
+
+						<![ endif ]-->
+
+							<source srcset="{if home_testimonial:testimonial_image}{home_testimonial:testimonial_image}{if:else}{home_testimonial_image}{/if}" media="(min-width: 1000px)">
+
+							<source srcset="{if home_testimonial:testimonial_image}{home_testimonial:testimonial_image}{if:else}{home_testimonial_image}{/if}" media="(min-width: 800px)">
+
+							<source srcset="{if home_testimonial:testimonial_image}{home_testimonial:testimonial_image}{if:else}{home_testimonial_image}{/if}">
+
+						<!--[ if IE 9 ]>
+
+							</video>
+
+						<![ endif ]-->
+
+						<img srcset="{if home_testimonial:testimonial_image}{home_testimonial:testimonial_image}{if:else}{home_testimonial_image}{/if}" alt="" />
+
+					</picture>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	{/home_testimonial}
+
+{/exp:channel:entries}

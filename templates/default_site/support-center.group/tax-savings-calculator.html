@@ -1,0 +1,175 @@
+{layout='inc/layout'}
+
+
+
+<p>The Tax Savings Calculator is designed to help you determine how much your Flexible Benefit Plan will save you on your taxes. Please complete the applicable information below, and then click on &quot;Calculate Tax Savings,&quot; to view your results.</p>
+
+<div class="form">
+
+	<form name="TaxSavingsCalcForm" action="/support-center/taxcalc_function?function=CalculateTaxSavings" method="post">
+
+		<fieldset>
+
+			<legend>Annual Income</legend>
+
+			<ul>
+
+				<li>
+
+					<label for="AnnualSalary">1. Enter your annual salary BEFORE taxes.</label>
+
+					<input type="text" name="AnnualSalary" id="AnnualSalary" />
+
+				</li>
+
+				<li>
+
+					<label for="SpouseSalary">2. Enter your spouse's annual salary BEFORE taxes (if filing jointly).</label>
+
+					<input type="text" name="SpouseSalary" id="SpouseSalary" value="0" />
+
+				</li>
+
+				<li>
+
+					<fieldset>
+
+						<legend>3. Select your tax filing status:</legend>
+
+						<ul>
+
+							<li>
+
+								<label for="Single">
+
+									<input type="radio" name="FilingStatus" id="Single" value="Single" /> Single
+
+								</label>
+
+							</li>
+
+							<li>
+
+								<label for="MarriedFilingJointly">
+
+									<input type="radio" name="FilingStatus" id="MarriedFilingJointly" value="MarriedFilingJointly" /> Filing Jointly or Qualifying Widow(er)
+
+								</label>
+
+							</li>
+
+							<li>
+
+								<label for="MarriedFilingSeparately">
+
+									<input type="radio" name="FilingStatus" id="MarriedFilingSeparately" value="MarriedFilingSeparately" /> Married, Filing Separately
+
+								</label>
+
+							</li>
+
+							<li>
+
+								<label for="HeadOfHousehold">
+
+									<input type="radio" name="FilingStatus" id="HeadOfHousehold" value="HeadOfHousehold" /> Head of Household
+
+								</label>
+
+							</li>
+
+						</ul>
+
+					</fieldset>
+
+				</li>
+
+				<li>
+
+					<label for="StateTaxPercent">4. Enter your state income tax percentage</label>
+
+					<input type="text" name="StateTaxPercent" id="StateTaxPercent" onBlur="document.forms[0].AnnualInsurancePremium.focus();" />
+
+				</li>
+
+			</ul>
+
+		</fieldset>
+
+		<fieldset>
+
+			<legend>Annual Benefit Contributions</legend>
+
+			<ul>
+
+				<li>
+
+					<label for="AnnualInsurancePremium">1. Enter the annual amount you will spend on your payroll deducted insurance premiums. These are qualified insurance premiums that can be pre-taxed through the Flexible Benefit Plan (i.e. health insurance, dental insurance, and group term life of up to $50,000 coverage).</label>
+
+					<div class="with-label">
+
+						<span class="label">$</span> <input type="text" name="AnnualInsurancePremium" id="AnnualInsurancePremium" value="0" />
+
+					</div>
+
+				</li>
+
+				<li>
+
+					<label for="AnnualMedicalSpending">2. Enter the annual amount you wish to contribute to your Healthcare Flexible Spending Account (FSA). These funds are used for reimbursing your qualified out-of-pocket healthcare expenses.</label>
+
+					<div class="with-label">
+
+						<span class="label">$</span> <input type="text" name="AnnualMedicalSpending" id="AnnualMedicalSpending" value="0" />
+
+					</div>
+
+				</li>
+
+				<li>
+
+					<label for="AnnualDependentCareSpending">3. Enter the annual amount you wish to contribute to your Dependent Care Flexible Spending Account (FSA). These funds are used for reimbursing your qualified child and/or adult dependent daycare expenses.&nbsp; The IRS maximum is currently $5,000 if married filing jointly and $2,500 if filing separately.</label>
+
+					<div class="with-label">
+
+						<span class="label">$</span> <input type="text" name="AnnualDependentCareSpending" id="AnnualDependentCareSpending" value="0" />
+
+					</div>
+
+				</li>
+
+				<li>
+
+					<label for="AnnualTransportationSpending">4. Enter the annual amount you wish to contribute to your Health Savings Account (HSA). These funds are used for reimbursing your qualified out-of-pocket healthcare expenses. The maximum allowable contribution is limited to the lesser of the insurance plan deductible or the IRS maximum. Indexed annually, for 2015 the maximum amount is $3,350 for an individual or $6,650 for a family.</label>
+
+					<div class="with-label">
+
+						<span class="label">$</span> <input type="text" name="AnnualTransportationSpending" id="AnnualTransportationSpending" value="0" />
+
+					</div>
+
+				</li>
+
+				<li>
+
+					<label for="AnnualRetirementContribution">5. Enter the annual amount you wish to contribute to your Transportation and Parking plan. These funds are used for reimbursing your qualified parking fees and/or mass transit expenses. The maximum allowable contribution is determined by your employer.</label>
+
+					<div class="with-label">
+
+						<span class="label">$</span> <input type="text" name="AnnualRetirementContribution" id="AnnualRetirementContribution" value="0" />
+
+					</div>
+
+				</li>
+
+			</ul>
+
+		</fieldset>
+
+		<input type="button" name="Submit2" value="Calculate Tax Savings" onClick="checkForm(this);" />
+
+		<input type="reset" value="Reset" name="reset2" />
+
+	</form>
+
+</div>

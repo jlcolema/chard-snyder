@@ -1,0 +1,233 @@
+{layout='inc/layout'}
+
+{layout:set name='left-sidebar'}
+
+	{embed='inc/left-sidebar'}
+
+{/layout:set}
+
+{exp:channel:entries channel='pages' limit='1'}
+
+	{if page_title}
+
+		<h1>{page_title}</h1>
+
+	{if:else}
+
+		<h1>{title}</h1>
+
+	{/if}
+
+	{if page_overview}
+
+		<div class="summary">
+
+			{page_overview}
+
+		</div>
+
+	{/if}
+
+	{page_content}
+
+	<div class="form">
+
+		{exp:freeform:form form_name='request_a_proposal' return='/{segment_1}/{segment_2}/{segment_2}-thank-you'}
+
+			<fieldset>
+
+				<ul>
+
+					<li>
+
+						<label for="name">Name</label>
+
+						<input type="text" name="name" id="name" />
+
+					</li>
+
+					<li>
+
+						<label for="email">Email</label>
+
+						<input type="email" name="email" id="email" />
+
+					</li>
+
+					<li>
+
+						<label for="phone">Phone</label>
+
+						<input type="tel" name="phone" id="phone" />
+
+					</li>
+
+					<li>
+
+						<label for="company_name">Company Name</label>
+
+						<input type="text" name="company_name" id="company_name" />
+
+					</li>
+
+					<li>
+
+						<label for="number_of_eligible_employees">Number of Eligible Employees</label>
+
+						<input type="text" name="number_of_eligible_employees" id="number_of_eligible_employees" />
+
+					</li>
+
+					<li>
+
+						<label for="plan_effective_date">Plan Effective Date</label>
+
+						<select name="plan_effective_date" id="plan_effective_date">
+
+							<option>Select</option>
+							<option value="January 1">January 1</option>
+							<option value="February 1">February 1</option>
+							<option value="March 1">March 1</option>
+							<option value="April 1">April 1</option>
+							<option value="May 1">May 1</option>
+							<option value="June 1">June 1</option>
+							<option value="July 1">July 1</option>
+							<option value="August 1">August 1</option>
+							<option value="September 1">September 1</option>
+							<option value="October 1">October 1</option>
+							<option value="November 1">November 1</option>
+							<option value="December 1">December 1</option>
+
+						</select>
+
+					</li>
+
+				</ul>
+
+			</fieldset>
+
+			<fieldset>
+
+				<legend>Services</legend>
+
+				<ul>
+
+					<li>
+
+						<label for="services">
+
+							<input type="checkbox" name="services[]" value="Flexible Spending Account (FSA)" /> Flexible Spending Account (FSA)
+
+						</label>
+
+					</li>
+
+					<li>
+
+						<label for="services">
+
+							<input type="checkbox" name="services[]" value="Health Reimbursement Arrangement (HRA)" /> Health Reimbursement Arrangement (HRA)
+
+						</label>
+
+					</li>
+
+					<li>
+
+						<label for="services">
+
+							<input type="checkbox" name="services[]" value="Health Savings Account (HSA)" /> Health Savings Account (HSA)
+
+						</label>
+
+					</li>
+
+					<li>
+
+						<label for="services">
+
+							<input type="checkbox" name="services[]" value="Transportation &amp; Parking (TRP)" /> Transportation &amp; Parking (TRP)
+
+						</label>
+
+					</li>
+
+					<li>
+
+						<label for="services">
+
+							<input type="checkbox" name="services[]" value="Plan Document Services" /> Plan Document Services
+
+						</label>
+
+					</li>
+
+					<li>
+
+						<label for="services">
+
+							<input type="checkbox" name="services[]" value="COBRA" /> COBRA
+
+						</label>
+
+					</li>
+
+					<li>
+
+						<label for="services">
+
+							<input type="checkbox" name="services[]" value="Billing" /> Billing
+
+						</label>
+
+					</li>
+
+					<li>
+
+						<label for="services">
+
+							<input type="checkbox" name="services[]" value="Family Medical Leave Act (FMLA)" /> Family Medical Leave Act (FMLA)
+
+						</label>
+
+					</li>
+
+				</ul>
+
+			</fieldset>
+
+			<fieldset>
+
+				<ul>
+
+					<li>
+
+						<label for="additional_information">Additional Information</label>
+
+						<textarea name="additional_information" id="additional_information"></textarea>
+
+					</li>
+
+				</ul>
+
+			</fieldset>
+
+			<div class="file-attachment">
+
+				{freeform:field:attach_file}
+
+				<label for="freeform_attach_file0">
+
+					<span>Attach a File</span>
+
+				</label>
+
+			</div>
+
+			<button type="submit">Send</button>
+
+		{/exp:freeform:form}
+
+	</div>
+
+{/exp:channel:entries}

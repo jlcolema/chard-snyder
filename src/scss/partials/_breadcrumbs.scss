@@ -1,0 +1,77 @@
+
+/*-------------------------------------------
+	Header
+-------------------------------------------*/
+
+
+#breadcrumbs {
+
+	.wrap {
+
+		max-width: 1280px;
+		margin: 0 auto;
+		padding: 0 20px;
+
+		@media screen and (min-width: 500px) {
+
+			padding: 0 30px;
+
+		}
+
+		@media screen and (min-width: 700px) {
+
+			padding: 0 45px;
+
+		}
+
+		@media screen and (min-width: 920px) {
+
+			display: flex;
+
+		}
+
+		// IE 8
+
+		.ie8 & {
+
+			width: 1280px;
+			padding: 0 45px;
+
+		}
+
+	}
+
+}
+
+
+		#breadcrumbs {
+
+			width: 100%;
+			padding: 18px 0;
+			@include font-size(14);
+			line-height: (24/14) + em;
+			color: $cyan;
+
+			a {
+
+				margin: 0 4px;
+				color: $blue;
+
+				&:hover {}
+
+				&:first-of-type {
+
+					margin: 0 4px 0 0;
+
+				}
+
+			}
+
+				span {
+
+					margin: 0 4px;
+					color: $cyan;
+
+				}
+
+		}

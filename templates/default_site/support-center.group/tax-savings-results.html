@@ -1,0 +1,172 @@
+{layout='inc/layout'}
+
+{layout:set name='contact-sidebar'}
+
+	{embed='inc/contact-sidebar'}
+
+{/layout:set}
+
+<script Language="JavaScript" type="text/javascript">
+<!--
+
+	var AnnualSalary = 0;
+	var SpouseSalary = 0;
+	var TotalSalary = 0;
+	var FilingStatus;
+	var StateTaxPercent = 0;
+	var AnnualInsurancePremium = 0;
+	var AnnualMedicalSpending = 0;
+	var AnnualDependentCareSpending = 0;
+	var AnnualTransportationSpending = 0;
+	var AnnualRetirementContribution = 0;
+
+	var InsuranceTaxSavings = 0;
+	var MedicalTaxSavings = 0;
+	var DependentCareTaxSavings = 0;
+	var TransportationTaxSavings = 0;
+	var RetirementTaxSavings = 0;
+	var TotalTaxSavings = 0;
+	var TaxMulitplier1 = 0.28;
+	var TaxMulitplier2 = 0.31;
+	var TaxMulitplier3 = 0.36;
+	var TaxMulitplier4 = 0.396;
+	var FedTaxPercentage = 0;
+	var FICATaxPercentage = 7.65;
+
+	// parse query string to get form values
+
+	url = self.location.href;
+	queryStringStart = url.indexOf('?') + 1;
+	urlStringToSplit = self.location.href.substring(queryStringStart);
+
+	arrayOfStrings = urlStringToSplit.split('&');
+
+	// first calculate total annual salary, i.e. AnnualSalary + Spouse's Salary
+
+	AnnualSalary = parseFloat(arrayOfStrings[0]);
+	SpouseSalary =  parseFloat(arrayOfStrings[1]);
+	TotalSalary = AnnualSalary + SpouseSalary;
+
+	// Calculate Tax Savings for each category of Filing Status
+
+	StateTaxPercent = parseFloat(arrayOfStrings[3]);
+
+	if (arrayOfStrings[2] == "Single" )
+	{
+		if (AnnualSalary <= 25750 )
+			FedTaxPercentage = 15.0;
+		else if   (25750 < AnnualSalary && AnnualSalary <= 62450 )
+			FedTaxPercentage = 100*(TaxMulitplier1 * AnnualSalary - 3348)/AnnualSalary;
+		else if   (62450 < AnnualSalary && AnnualSalary <= 130250 )
+			FedTaxPercentage = 100*(TaxMulitplier2 * AnnualSalary - 5221)/AnnualSalary;
+		else if  ( 130250 < AnnualSalary && AnnualSalary <= 283150 )
+			FedTaxPercentage = 100*(TaxMulitplier3 * AnnualSalary - 11734)/AnnualSalary;
+		else if (AnnualSalary > 283150 )
+			FedTaxPercentage = 100*(TaxMulitplier4 * AnnualSalary - 21927)/AnnualSalary;
+
+	}
+	else if (arrayOfStrings[2] == "MarriedFilingJointly" )
+	{
+		if (TotalSalary <= 43050 )
+			FedTaxPercentage = 15.0;
+		else if   (43050 < TotalSalary && TotalSalary <= 104050 )
+			FedTaxPercentage = 100*(TaxMulitplier1 * TotalSalary - 5597)/TotalSalary;
+		else if   (104050 < TotalSalary && TotalSalary <= 158550 )
+			FedTaxPercentage = 100*(TaxMulitplier2 * TotalSalary - 8718)/TotalSalary;
+		else if   (158550 < TotalSalary && TotalSalary <= 283150 )
+			FedTaxPercentage = 100*(TaxMulitplier3 * TotalSalary - 16646)/TotalSalary;
+		else if (TotalSalary > 283150 )
+			FedTaxPercentage = 100*(TaxMulitplier4 * TotalSalary - 26839)/TotalSalary;
+
+	}
+	else if (arrayOfStrings[2] == "MarriedFilingSeparately")
+	{
+		if (AnnualSalary <= 21525 )
+			FedTaxPercentage = 15.0;
+		else if   (21525 < AnnualSalary && AnnualSalary <= 52025 )
+			FedTaxPercentage = 100*(TaxMulitplier1 * AnnualSalary - 2798)/AnnualSalary;
+		else if   (52025 < AnnualSalary && AnnualSalary <= 79275 )
+			FedTaxPercentage = 100*(TaxMulitplier2 * AnnualSalary - 4359)/AnnualSalary;
+		else if   (79275 < AnnualSalary && AnnualSalary <= 141575 )
+			FedTaxPercentage = 100*(TaxMulitplier3 * AnnualSalary - 8323)/AnnualSalary;
+		else if (AnnualSalary > 141575 )
+			FedTaxPercentage = 100*(TaxMulitplier4 * AnnualSalary - 13420)/AnnualSalary;
+
+	}
+	else if (arrayOfStrings[2] == "HeadOfHousehold" )
+	{
+		if (AnnualSalary <= 34550 )
+			FedTaxPercentage = 15.0;
+		else if   (34550 < AnnualSalary && AnnualSalary <= 89150 )
+			FedTaxPercentage = 100*(TaxMulitplier1 * AnnualSalary - 4492)/AnnualSalary;
+		else if   (89150 < AnnualSalary && AnnualSalary <= 144400 )
+			FedTaxPercentage = 100*(TaxMulitplier2 * AnnualSalary - 7166)/AnnualSalary;
+		else if   (144400 < AnnualSalary && AnnualSalary <= 283150 )
+			FedTaxPercentage = 100*(TaxMulitplier3 * AnnualSalary - 14386)/AnnualSalary;
+		else if (AnnualSalary > 283150 )
+			FedTaxPercentage = 100*(TaxMulitplier4 * AnnualSalary - 24580)/AnnualSalary;
+
+	}
+
+	// Calculate Tax Savings for each Tax Saving Category
+	// Section 125 Insurance Premiums
+
+	AnnualInsurancePremium = parseFloat(arrayOfStrings[4]);
+	InsuranceTaxSavings =  AnnualInsurancePremium * ((FedTaxPercentage + StateTaxPercent + FICATaxPercentage)/100.0);
+
+	// Section 125 Medical Spending
+
+	AnnualMedicalSpending = parseFloat(arrayOfStrings[5]);
+	MedicalTaxSavings = AnnualMedicalSpending * ((FedTaxPercentage + StateTaxPercent + FICATaxPercentage)/100.0);
+
+	// Section 125 Dependent Care
+
+	AnnualDependentCareSpending = parseFloat(arrayOfStrings[6]);
+	DependentCareTaxSavings = AnnualDependentCareSpending * ((FedTaxPercentage + StateTaxPercent + FICATaxPercentage)/100.0);
+
+	// Section 132 Parking Dependent Care Account
+
+	AnnualTransportationSpending = parseFloat(arrayOfStrings[7]);
+	TransportationTaxSavings = AnnualTransportationSpending * ((FedTaxPercentage + StateTaxPercent + FICATaxPercentage)/100.0);
+
+	// 401(k) Retirement Savings -- note: this does not include the FICA Tax Percentage
+
+	AnnualRetirementContribution = parseFloat(arrayOfStrings[8]);
+	RetirementTaxSavings = AnnualRetirementContribution * ((FedTaxPercentage + StateTaxPercent)/100.0);
+
+	// Calculate Total Tax Savings
+
+	TotalTaxSavings = InsuranceTaxSavings + MedicalTaxSavings + DependentCareTaxSavings + TransportationTaxSavings + RetirementTaxSavings;
+
+//-->
+</script>
+
+<h1>Tax Savings Results</h1>
+
+<p>Your estimated annual tax savings results are shown below. This calculation is an estimate of your annual tax savings and is based on the current IRS income tax rate schedule and information supplied by you. For more information or if you have any questions, please <a href="mailto:askpenny@chard-snyder">contact us</a> or call our Customer Service Center toll-free at 800-982-7715.</p>
+
+<h2>Your Tax Savings Amount</h2>
+
+<div class="tax-savings-results">
+
+	<span class="label">$</span>
+
+	<script language="javascript">
+
+		document.open();
+		document.write((Math.round(TotalTaxSavings)));
+		document.close();
+
+	</script>
+
+</div>
+
+<div class="back-to">
+
+	<a href="/support-center/tools-and-apps/tax-savings-calculator">
+
+		<span class="arrow">&larr;</span> Back to Tax Savings Calculator
+
+	</a>
+
+</div>

@@ -1,0 +1,247 @@
+{layout='inc/layout'}
+
+{layout:set name='contact-sidebar'}
+
+	{embed='inc/contact-sidebar'}
+
+{/layout:set}
+
+<h1>Search Results</h1>
+
+<p>The following are results for &ldquo;<i>{exp:search:keywords}</i>.&rdquo;</p>
+
+<div class="search-results">
+
+	<div class="listing">
+
+		<ul>
+
+			{exp:search:search_results}
+
+				{if channel_short_name == 'compliance_watch'}
+
+					<li class="type-compliance-watch">
+
+						<h2>
+
+							<a href="{page_url}">{title}</a>
+
+						</h2>
+
+						{if compliance_watch_short_desc}
+
+							<div class="result-summary">
+
+								{compliance_watch_short_desc}
+
+							</div>
+
+						{/if}
+
+						<div class="more">
+
+							<a href="{page_url}">
+
+								View <span class="arrow">&rarr;</span>
+
+							</a>
+
+						</div>
+
+					</li>
+
+				{/if}
+
+				{if channel_short_name == 'faqs'}
+
+					<li class="type-faqs">
+
+						<h2>
+
+							<a href="{page_url}">{title}</a>
+
+						</h2>
+
+						{if faq_short_answer}
+
+							<div class="result-summary">
+
+								{faq_short_answer}
+
+							</div>
+
+						{/if}
+
+						<div class="more">
+
+							<a href="{page_url}">
+
+								View <span class="arrow">&rarr;</span>
+
+							</a>
+
+						</div>
+
+					</li>
+
+				{/if}
+
+				{if channel_short_name == 'forms_and_resources'}
+
+					<li class="type-forms-and-resources">
+
+						<h2>
+
+							<a href="{page_url}">{title}</a>
+
+						</h2>
+
+						{if form_and_resource_short_desc}
+
+							<div class="result-summary">
+
+								{form_and_resource_short_desc}
+
+							</div>
+
+						{/if}
+
+						<div class="more">
+
+							<a href="{page_url}">
+
+								View <span class="arrow">&rarr;</span>
+
+							</a>
+
+						</div>
+
+					</li>
+
+				{/if}
+
+				{if channel_short_name == 'tools_and_apps'}
+
+					<li class="type-tools-and-apps">
+
+						<h2>
+
+							<a href="{page_url}">{title}</a>
+
+						</h2>
+
+						{if tool_and_app_short_desc}
+
+							<div class="result-summary">
+
+								{tool_and_app_short_desc}
+
+							</div>
+
+						{/if}
+
+						<div class="more">
+
+							<a href="{page_url}">
+
+								View <span class="arrow">&rarr;</span>
+
+							</a>
+
+						</div>
+
+					</li>
+
+				{/if}
+
+				{if channel_short_name == 'videos'}
+
+					<li class="type-videos">
+
+						<h2>
+
+							<a href="{page_url}">{title}</a>
+
+						</h2>
+
+						{if video_short_desc}
+
+							<div class="result-summary">
+
+								{video_short_desc}
+
+							</div>
+
+						{/if}
+
+						<div class="more">
+
+							<a href="{page_url}">
+
+								View <span class="arrow">&rarr;</span>
+
+							</a>
+
+						</div>
+
+					</li>
+
+				{/if}
+
+				{paginate}
+
+					{pagination_links}
+
+						<div class="pagination">
+
+							{previous_page}
+
+								<div class="back">
+
+									<a href="{pagination_url}">
+
+										<span class="arrow">&larr;</span> Back
+
+									</a>
+
+								</div>
+
+							{/previous_page}
+
+							<div class="pages">
+
+								{page}
+
+									<a href="{pagination_url}" class="{if current_page}active{/if}">{pagination_page_number}</a>
+
+								{/page}
+
+							</div>
+
+							{next_page}
+
+								<div class="next">
+
+									<a href="{pagination_url}">
+
+										Next <span class="arrow">&rarr;</span>
+
+									</a>
+
+								</div>
+
+							{/next_page}
+
+						</div>
+
+					{/pagination_links}
+
+				{/paginate}
+
+			{/exp:search:search_results}
+
+		</ul>
+
+	</div>
+
+</div>

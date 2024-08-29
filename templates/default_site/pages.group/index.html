@@ -1,0 +1,115 @@
+{layout='inc/layout'}
+
+{layout:set name='left-sidebar'}
+
+	{embed='inc/left-sidebar'}
+
+{/layout:set}
+
+{exp:channel:entries channel='pages' limit='1'}
+
+	{if page_title}
+
+		<h1>{page_title}</h1>
+
+	{if:else}
+
+		<h1>{title}</h1>
+
+	{/if}
+
+	{if page_overview}
+
+		<div class="summary">
+
+			{page_overview}
+
+		</div>
+
+	{/if}
+
+	{page_content}
+
+	{if segment_1 == 'benefits'}
+
+		{if '{page_common_questions:count}' >= '1'}
+
+			<div class="common-questions">
+
+				<h3>Common Questions</h3>
+
+				<ul>
+
+		{/if}
+
+					{page_common_questions}
+
+						<li>
+
+							<a href="{page_common_questions:page_url}">{page_common_questions:title}</a>
+
+						</li>
+
+					{/page_common_questions}
+
+		{if '{page_common_questions:count}' >= '1'}
+
+				</ul>
+
+				<div class="more">
+
+					<a href="/support-center/faqs/">View all FAQs</a>
+
+				</div>
+
+			</div>
+
+		{/if}
+
+		{if '{page_fsa_forms:count}' >= '1'}
+
+			<div class="fsa-forms">
+
+				<h3>Forms &amp; Resources</h3>
+
+				<ul>
+
+		{/if}
+
+					{page_fsa_forms}
+
+						<li>
+
+							<a href="{page_fsa_forms:page_url}">{page_fsa_forms:title}</a>
+
+						</li>
+
+					{/page_fsa_forms}
+
+		{if '{page_fsa_forms:count}' >= '1'}
+
+				</ul>
+
+				<div class="more">
+
+					<a href="/support-center/forms-and-resources/">View all Forms &amp; Resources</a>
+
+				</div>
+
+			</div>
+
+		{/if}
+
+	{/if}
+
+	{page_advertisement}
+
+		<div class="advertisement">
+
+			{page_advertisement:advertisement_vendor_code}
+
+		</div>
+
+	{/page_advertisement}
+
+{/exp:channel:entries}
